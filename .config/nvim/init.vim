@@ -15,37 +15,37 @@ syntax on
 " =======
 
 call plug#begin()
-	" Aesthetics
+	" === Aesthetics ===
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } " Provides: Catppuccin color scheme
 	Plug 'junegunn/goyo.vim' " Provides: Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
 		Plug 'junegunn/limelight.vim' " Provides: Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
-	" Markdown
+	" === Markdown ===
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " Provide: Markdown preview in-browser (note: use pre-built if you don't have node nad yarn!)
 	Plug 'dkarter/bullets.vim' " Provides: Intuitive bullet-point behavior in Markdown
 	Plug 'ellisonleao/glow.nvim' " Provides: A quick in-terminal preview of a markdown file (useful when you just want to read a markdown file without live-preview editing it in a separate window)
-	" Pandoc
-	" Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
-	" 	Plug 'vim-pandoc/vim-pandoc-syntax' " Provides: Syntax support for vim pandoc
-	" Coding
+	" === Pandoc ===
+	Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
+		Plug 'vim-pandoc/vim-pandoc-syntax' " Provides: Syntax support for vim pandoc
+	" === Coding ===
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Provides: Better highlighting
 	Plug 'tpope/vim-fugitive' " Provides: Git integration. Most notable is ':G' for arbitrary git commands
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } " Provides: Fuzzy finder (optional deps: `fd` and `ripgrep`)
 		Plug 'nvim-lua/plenary.nvim' " Provides: Function library for Telescope
+	" === LSP Zero ===
+	" LSP Support
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'} 
+	Plug 'williamboman/mason-lspconfig.nvim'
+	" Autocompletion
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'hrsh7th/cmp-buffer' " Provides: Completions based on the current file
+	Plug 'hrsh7th/cmp-path' " Provides: Completions based on the filesystem
+	Plug 'saadparwaiz1/cmp_luasnip'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	" Snippets
+	Plug 'L3MON4D3/LuaSnip'
 	" LSP Zero
-		" LSP Support
-		Plug 'neovim/nvim-lspconfig'
-		Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'} 
-		Plug 'williamboman/mason-lspconfig.nvim'
-		" Autocompletion
-		Plug 'hrsh7th/nvim-cmp'
-		Plug 'hrsh7th/cmp-buffer' " Provides: Completions based on the current file
-		Plug 'hrsh7th/cmp-path' " Provides: Completions based on the filesystem
-		Plug 'saadparwaiz1/cmp_luasnip'
-		Plug 'hrsh7th/cmp-nvim-lsp'
-		" Snippets
-		Plug 'L3MON4D3/LuaSnip'
-		" LSP Zero
-		Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
+	Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 call plug#end()
 
 " catpuccin/nvim: Apply colorscheme
