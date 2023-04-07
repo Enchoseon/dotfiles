@@ -13,7 +13,7 @@ focus_background_color = black
 editor = nvim -c ':set filetype=todotxt'
 
 [columns]
-column_width = 47
+column_width = 42
 
 [column_keymap]
 E = cmd edit
