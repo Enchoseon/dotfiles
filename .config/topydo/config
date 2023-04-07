@@ -1,0 +1,24 @@
+[topydo]
+archive_filename = ~/Sync/Notes/done.txt
+filename = ~/Sync/Notes/todo.txt
+default_command = columns
+
+[add]
+auto_creation_date = 0
+
+[colorscheme]
+focus_background_color = black
+
+[edit]
+editor = nvim -c ':set filetype=todotxt'
+
+[columns]
+column_width = 47
+
+[column_keymap]
+E = cmd edit
+q = cmd exit
+
+[aliases]
+q = exit
+
