@@ -1,7 +1,7 @@
 # Prioritized items that aren't overdue
 [Prioritized]
 title = Prioritized
-filterexpr = due:>today (>Z) 
+filterexpr = due:>yesterday (>Z)
 sortexpr = desc:priority,asc:due
 show_all = 0
 
