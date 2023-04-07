@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Find Firefox Profile Path (https://askubuntu.com/a/354907)
+cd ~/.mozilla/firefox/ || exit
+if [[ $(grep '\[Profile[^0]\]' profiles.ini) ]]
+then FIREFOX_PROFILE=$(grep -E '^\[Profile|^Path|^Default' profiles.ini | grep -1 '^Default=1' | grep '^Path' | cut -c6-)
+else FIREFOX_PROFILE=$(grep 'Path=' profiles.ini | sed 's/^Path=//')
+fi
+FIREFOX_PROFILE="${HOME}/.mozilla/firefox/${FIREFOX_PROFILE}"
+
+# Step I: Install Arkenfox
+echo "Bootstrap: Installing user-overrides.js to ${FIREFOX_PROFILE}"
+cp "${HOME}/.config/yadm/firefox/user-overrides.js" "${FIREFOX_PROFILE}/user-overrides.js"
+bash "${HOME}/.config/yadm/firefox/user.js/updater.sh" -p "${FIREFOX_PROFILE}"
