@@ -12,3 +12,7 @@ FIREFOX_PROFILE="${HOME}/.mozilla/firefox/${FIREFOX_PROFILE}"
 echo "Bootstrap: Installing user-overrides.js to ${FIREFOX_PROFILE}"
 cp "${HOME}/.config/yadm/firefox/user-overrides.js" "${FIREFOX_PROFILE}/user-overrides.js"
 bash "${HOME}/.config/yadm/firefox/user.js/updater.sh" -p "${FIREFOX_PROFILE}"
+
+# Step II: Install Firefox Userchrome
+echo "Bootstrap: Installing userChrome to ${FIREFOX_PROFILE}"
+cp -r "${HOME}/.config/yadm/firefox/chrome/" "${FIREFOX_PROFILE}/chrome/"
