@@ -24,6 +24,7 @@ alias school="ranger '${HOME}/Sync/Notes/School/Spring 2023'" # ... in my school
 
 # Todo.txt
 alias todo="vi -c ':set filetype=todotxt' ${HOME}/Sync/Notes/todo.txt" # Edit Todo.txt in Neovim
+alias topydo="${HOME}/Scripts/venv/bin/topydo" # Launch topydo
 alias t="${HOME}/Scripts/venv/bin/topydo columns" # Launch topydo columns TUI
 
 # Auto Editor
