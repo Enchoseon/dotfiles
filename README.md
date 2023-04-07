@@ -163,6 +163,7 @@ SOFTWARE.
 
 ### [Cascade](https://github.com/andreasgrafen/cascade)
 
+- Location: `.config/yadm/firefox/chrome/*`
 - LICENSE: [MIT License](https://github.com/andreasgrafen/cascade/blob/main/LICENSE)
 
 ```
