@@ -163,6 +163,13 @@ let g:netrw_liststyle = 3 " Tree-style listing
 let g:netrw_winsize = 25 " Shrink netrw to 25% width when previewing a file
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles by default (toggle with 'gh')
 
+" ===================
+" :W to Write as Sudo
+" ===================
+
+" Based on https://vi.stackexchange.com/a/25038
+com -bar W exe 'w !pkexec tee >/dev/null %:p:S' | setl nomod
+
 " =====================
 " Other Neovim Settings
 " =====================
