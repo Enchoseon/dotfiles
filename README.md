@@ -2,6 +2,10 @@
 
 My dotfiles. Have fun, caveat emptor, blah blah blah.
 
+# Redistribution
+
+This repository stores and redistributes some binaries/scripts (e.g. every zsh plugin I use) so that bootstrapping is just a simple and reproducible clone. Many of these binaries/scripts haven't been updated in 2 years (and hopefully shouldn't need to be!) However, a convenient way to update all of them is currently lacking.
+
 # Licenses
 
 ## [Catppuccin for zsh-syntax-highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
