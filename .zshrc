@@ -171,7 +171,7 @@ bindkey '^[[B' history-substring-search-down
 # ======
 
 emulate -L zsh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh # Fish-like autosuggestions (AUR Package: `zsh-autosuggestions`)
 
 # Determine terminal capabilities.
