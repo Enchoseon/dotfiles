@@ -171,6 +171,13 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles by default (toggl
 " Based on https://vi.stackexchange.com/a/25038
 com -bar W exe 'w !pkexec tee >/dev/null %:p:S' | setl nomod
 
+" ===================
+" Non-Plugin Autocmds
+" ===================
+
+" Start in insert mode at top of file when entering gitcommits
+autocmd FileType gitcommit :1 | :startinsert!
+
 " =====================
 " Other Neovim Settings
 " =====================
