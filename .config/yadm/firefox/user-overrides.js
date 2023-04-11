@@ -58,3 +58,7 @@ user_pref("widget.use-xdg-desktop-portal", true);
 
 /* Stop launching in different virtual desktops ***/
 user_pref("widget.disable-workspace-management", true);
+
+/* Disable default keyword integration ***/
+/* Explanation: I do "@g" to search in the Gentoo Wiki, "@a" to search in the Arch Wiki, etc. However, for some reason "@g+<SPACE>+<QUERY>" stopped working, it'd just get redirected to "@google" (even though I disabled Google search engine). Not even "@gentoo" worked, anything that started with "g" just got swalled by google. This tweak fixes that behavior. ***/
+user_pref("browser.urlbar.update2", true);
