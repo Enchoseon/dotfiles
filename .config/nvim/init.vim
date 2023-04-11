@@ -95,6 +95,7 @@ let g:bullets_enabled_file_types = [ "markdown", "text", "gitcommit" ] " Only en
 " ellisonleao/glow.nvim: Setup Glow to launch in a larger window
 lua << EOF
 	require("glow").setup({
+		border = "",
 		width_ratio = 0.9,
 		height_ratio = 0.9,
 	})
