@@ -24,8 +24,8 @@ call plug#begin()
 	Plug 'dkarter/bullets.vim' " Provides: Intuitive bullet-point behavior in Markdown
 	Plug 'ellisonleao/glow.nvim' " Provides: A quick in-terminal preview of a markdown file (useful when you just want to read a markdown file without live-preview editing it in a separate window)
 	" === Pandoc ===
-	Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
-		Plug 'vim-pandoc/vim-pandoc-syntax' " Provides: Syntax support for vim pandoc
+	" Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
+	" 	Plug 'vim-pandoc/vim-pandoc-syntax' " Provides: Syntax support for vim pandoc
 	" === Coding ===
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Provides: Better highlighting
 	Plug 'tpope/vim-fugitive' " Provides: Git integration. Most notable is ':G' for arbitrary git commands
