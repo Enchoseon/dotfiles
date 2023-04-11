@@ -2,11 +2,29 @@
 
 My dotfiles. Have fun, caveat emptor, blah blah blah.
 
-# Redistribution
+# The Big Picture
+
+Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; here's a brief overview of all my tools fit together in my day-to-day life.
+
+- **Lecture and Notes**: [Neovim](https://github.com/neovim/neovim) + [Syncthing](https://github.com/syncthing/syncthing) + [Markor](https://github.com/gsantner/markor)
+- **Flashcards**: [Anki](https://github.com/ankitects/anki) + [Ankidroid](https://github.com/ankidroid/Anki-Android)
+- **Lecture Videos**: [Auto Editor](https://auto-editor.com/)
+- **Writing**: [LibreOffice Writer (Suite)](https://github.com/libreoffice)
+- **Spell & Grammer Check**: [LanguageTool](https://github.com/languagetool-org/languagetool)
+- **Metasearch**: [SearXng](https://github.com/searxng/searxng)
+- **Music**: [Cmus](https://github.com/cmus/cmus) + [Nicotine+](https://github.com/nicotine-plus/nicotine-plus)
+- **To-do List**: [Todo.txt](https://github.com/todotxt/todo.txt) + [Simpletask](https://github.com/mpcjanssen/simpletask-android)
+- **Email**: [Claws Mail](https://git.claws-mail.org/)
+- **Pomodoro**: [Potato Redux](https://github.com/Enchoseon/potato-redux)
+- **Ad-Blocking**: [uBlock Origin](https://github.com/gorhill/uBlock) + [hBlock](https://github.com/hectorm/hblock)
+- **Multi-Button Mouse**: [Piper](https://github.com/libratbag/piper) + KDE Keyboard Daemon (it's just a GUI for [x11-misc/
+xkeyboard-config](https://packages.gentoo.org/packages/x11-misc/xkeyboard-config))
+
+For an explanation of *how* these tools fit together, see my blog post: https://enchoseon.com/productivity-tools
+
+# Licenses / Redistribution
 
 This repository stores and redistributes some binaries/scripts (e.g. every zsh plugin I use) so that bootstrapping is just a simple and reproducible clone. Many of these binaries/scripts haven't been updated in 2 years (and hopefully shouldn't need to be!) However, a convenient way to update all of them is currently lacking.
-
-# Licenses
 
 ## Zsh
 
