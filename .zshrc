@@ -13,6 +13,7 @@ USE_POWERLINE="true" # Use Powerline
 # Coreutils
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
+alias diff="diff --color --side-by-side --minimal"
 alias cp="cp -i" # Confirm before overwriting something
 alias df="df -h" # Human-readable sizes
 alias free='free -m' # Show sizes in MB
