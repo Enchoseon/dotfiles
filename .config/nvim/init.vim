@@ -24,8 +24,7 @@ call plug#begin()
 	Plug 'dkarter/bullets.vim' " Provides: Intuitive bullet-point behavior in Markdown
 	Plug 'ellisonleao/glow.nvim' " Provides: A quick in-terminal preview of a markdown file (useful when you just want to read a markdown file without live-preview editing it in a separate window)
 	" === Pandoc ===
-	" Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
-	" 	Plug 'vim-pandoc/vim-pandoc-syntax' " Provides: Syntax support for vim pandoc
+	Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
 	" === Coding ===
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Provides: Better highlighting
 	Plug 'tpope/vim-fugitive' " Provides: Git integration. Most notable is ':G' for arbitrary git commands
@@ -100,6 +99,16 @@ lua << EOF
 		height_ratio = 0.9,
 	})
 EOF
+
+" vim-pandoc/vim-pandoc: Set filetype to something MarkdownPreview and Mason will actually detect as Markdown and add ability to execute Pandoc on write and see preview.
+autocmd FileType pandoc set filetype=markdown.pandoc " Enable vim-pandoc on Markdown files. Workaround for https://github.com/vim-pandoc/vim-pandoc/issues/34
+let g:pandoc#modules#disabled = [ "folding" ] " Disable folding module
+function PandocPreview () " Custom function to open a live preview of the current document in Okular. Uses xelatex (dev-texlive/texlive-xetex) to generate the riced PDF.
+	let l:command = "Pandoc pdf -o /tmp/vim-pandoc.pdf --pdf-engine=xelatex -H ~/.config/nvim/catppuccin_pandoc.tex"
+	let g:pandoc#command#autoexec_command = l:command
+	let g:pandoc#command#autoexec_on_writes = 1 | execute l:command | :silent !okular "/tmp/vim-pandoc.pdf" &
+endfunction
+command PandocPreview call PandocPreview()
 
 " nvim-treesitter/nvim-treesitter: Enable modules
 lua << EOF

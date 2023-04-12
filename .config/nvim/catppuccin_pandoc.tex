@@ -1,0 +1,66 @@
+% This is a LaTeX header file used by the :PandocPreview command in ~/.config/nvim/init.vim
+% Resources Used:
+% - https://learnbyexample.github.io/customizing-pandoc/
+% - https://latex-tutorial.com/changing-font-style/
+
+% Increase header sizes, center titles
+\usepackage{relsize}
+\usepackage{sectsty}
+	\allsectionsfont{\larger[1.2]} 
+\usepackage{titlesec}
+	\titleformat{\section}
+		{\normalfont\LARGE\bfseries\centering}{\thesection}{}{}
+
+% Set margins
+\usepackage[margin=0.5in]{geometry}
+
+% Define Catppuccin Mocha colors
+\usepackage{xcolor}
+	\definecolor{rosewater}{HTML}{f5e0dc}
+	\definecolor{flamingo}{HTML}{f2cdcd}
+	\definecolor{pink}{HTML}{f5c2e7}
+	\definecolor{mauve}{HTML}{cba6f7}
+	\definecolor{red}{HTML}{f38ba8}
+	\definecolor{maroon}{HTML}{eba0ac}
+	\definecolor{peach}{HTML}{fab387}
+	\definecolor{yellow}{HTML}{f9e2af}
+	\definecolor{green}{HTML}{a6e3a1}
+	\definecolor{teal}{HTML}{94e2d5}
+	\definecolor{sky}{HTML}{89dceb}
+	\definecolor{sapphire}{HTML}{74c7ec}
+	\definecolor{blue}{HTML}{89b4fa}
+	\definecolor{lavender}{HTML}{b4befe}
+	\definecolor{text}{HTML}{cdd6f4}
+	\definecolor{subtext1}{HTML}{bac2de}
+	\definecolor{subtext0}{HTML}{a6adc8}
+	\definecolor{overlay2}{HTML}{9399b2}
+	\definecolor{overlay1}{HTML}{7f849c}
+	\definecolor{overlay0}{HTML}{6c7086}
+	\definecolor{surface2}{HTML}{585b70}
+	\definecolor{surface1}{HTML}{45475a}
+	\definecolor{surface0}{HTML}{313244}
+	\definecolor{base}{HTML}{1e1e2e}
+	\definecolor{mantle}{HTML}{181825}
+	\definecolor{crust}{HTML}{11111b}
+
+% Use Same Fonts as System
+\usepackage{fontspec}
+	\setmainfont{Noto Sans}
+	\setsansfont{Noto Sans}
+	\setmonofont{Hack}
+
+% Set Catppuccin colors
+\pagecolor{base}
+\color{text}
+
+% Page Break for Every Level 1 Header
+	% \usepackage{sectsty}
+	% \sectionfont{\clearpage}
+
+% Bullet Points
+\usepackage{enumitem}
+\usepackage{amsfonts}
+	\setlist[itemize,1]{label=$\bullet$}
+	\setlist[itemize,2]{label=$\circ$}
+	\setlist[itemize,3]{label=$\star$}
+
