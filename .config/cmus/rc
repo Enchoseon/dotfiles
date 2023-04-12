@@ -2,5 +2,4 @@ set mouse=true
 set follow=true
 set start_view=browser
 colorscheme dracula
-clear
 cd ~/Music/Soulseek/
