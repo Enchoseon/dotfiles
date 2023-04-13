@@ -1,7 +1,46 @@
 #!/usr/bin/env bash
 
+# Prompt for confirmation
+function prompt {
+	local MESSAGE=$1
+	printf "\e[1;34m%-6s\e[m %s \n" "${MESSAGE}"
+	select ynq in "Yes" "No"; do
+		case $ynq in
+			Yes ) 
+				return 0;;
+			No ) 
+				return 1;;
+		esac
+	done
+}
+
+# Git clone from GitHub.com, but remove all extraneous stuff after downloading.
+function clone {
+	local REPOSITORY=$1
+	local DIRECTORY=$2
+	# Rename or delete directory if it already exists
+	if [ -d "$DIRECTORY" ]; then
+		if prompt "Warning: Old folder (${DIRECTORY}) was found, would you like to delete it? (if 'No', then the folder will be renamed)"; then
+			rm -rf "${DIRECTORY}"
+		else
+			local TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+			local NEWDIRECTORY="${DIRECTORY}-old-${TIMESTAMP}"
+			mv "${DIRECTORY}" "${NEWDIRECTORY}"
+			printf "Important: Old folder was found and renamed to %s. Remember to delete it up yourself! \n" "${NEWDIRECTORY}."
+		fi
+	fi
+	git clone --depth=1 --branch=master "git@github.com:${REPOSITORY}.git" "${DIRECTORY}" &> /dev/null
+	cd "${DIRECTORY}" || echo "Error: Could not find ${DIRECTORY}" || exit
+		rm -rf ".git" ".github" ".circleci" "docs" "images" "tests" "spec" "src" 
+		rm -f "Makefile" "DESCRIPTION" "Dockerfile" "URL" "VERSION" "ZSH_VERSIONS" "Gemfile" "Gemfile.lock" "install_test_zsh.sh" 
+		find . -name '.*' -type f -delete  # Remove hidden files
+		find . -name "*.md" -type f -delete # Remove *.md
+		find . -name "*.png" -type f -delete # Remove *.png
+	cd ".."
+}
+
 # Find Firefox Profile Path (https://askubuntu.com/a/354907)
-cd ~/.mozilla/firefox/ || exit
+cd ~/.mozilla/firefox/ || echo "Error: Could not find ~/.mozilla/firefox/" || exit
 if [[ $(grep '\[Profile[^0]\]' profiles.ini) ]]
 then FIREFOX_PROFILE=$(grep -E '^\[Profile|^Path|^Default' profiles.ini | grep -1 '^Default=1' | grep '^Path' | cut -c6-)
 else FIREFOX_PROFILE=$(grep 'Path=' profiles.ini | sed 's/^Path=//')
@@ -9,10 +48,27 @@ fi
 FIREFOX_PROFILE="${HOME}/.mozilla/firefox/${FIREFOX_PROFILE}"
 
 # Step I: Install Arkenfox
-echo "Bootstrap: Installing user-overrides.js to ${FIREFOX_PROFILE}"
-cp "${HOME}/.config/yadm/firefox/user-overrides.js" "${FIREFOX_PROFILE}/user-overrides.js"
-bash "${HOME}/.config/yadm/firefox/user.js/updater.sh" -p "${FIREFOX_PROFILE}"
+if prompt "I. Would you like to install Arkenfox + user-overrides.js to ${FIREFOX_PROFILE}?"; then
+	echo "Bootstrap: Installing user-overrides.js to ${FIREFOX_PROFILE}"
+	cp "${HOME}/.config/yadm/firefox/user-overrides.js" "${FIREFOX_PROFILE}/user-overrides.js"
+	bash "${HOME}/.config/yadm/firefox/user.js/updater.sh" -p "${FIREFOX_PROFILE}"
+fi
 
 # Step II: Install Firefox Userchrome
-echo "Bootstrap: Installing userChrome to ${FIREFOX_PROFILE}"
-cp -r "${HOME}/.config/yadm/firefox/chrome/" "${FIREFOX_PROFILE}/chrome/"
+if prompt "II. Would you like to install Cascade + userChrome.css to ${FIREFOX_PROFILE}?"; then
+	echo "Bootstrap: Installing userChrome to ${FIREFOX_PROFILE}"
+	cp -r "${HOME}/.config/yadm/firefox/chrome/" "${FIREFOX_PROFILE}/chrome/"
+fi
+
+# Step III: Update all Zsh plugins
+if prompt "III. Would you like to update powerlevel10k + zsh-autosuggestions + zsh-history-substring-search + zsh-syntax-highlighting?"; then
+	mkdir -p "${HOME}/.zsh"
+	cd "${HOME}/.zsh" || echo "Error: Could not find ~/.zsh/" || exit
+	clone "romkatv/powerlevel10k" "powerlevel10k"
+	clone "zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
+	clone "zsh-users/zsh-history-substring-search" "zsh-history-substring-search"
+	clone "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting"
+	echo "" | tee "zsh-syntax-highlighting/.revision-hash" "zsh-syntax-highlighting/.version" > /dev/null
+fi
+
+printf "\e[1;34m%-6s\e[m" "Bootstrap script finished!"
