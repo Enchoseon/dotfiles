@@ -72,4 +72,9 @@ if prompt "III. Would you like to update powerlevel10k + zsh-autosuggestions + z
 	echo "" | tee "zsh-syntax-highlighting/.revision-hash" "zsh-syntax-highlighting/.version" > /dev/null
 fi
 
+# Step IV: Merge Xresources
+if prompt "IV. Would you like to run \"xrdb -merge ~/.Xresources\" to apply your current Xresources file? (this does not change your Xresources file)"; then
+	xrdb -merge ~/.Xresources
+fi
+
 printf "\e[1;34m%-6s\e[m" "Bootstrap script finished!"
