@@ -36,6 +36,7 @@ function clone {
 		find . -name '.*' -type f -delete  # Remove hidden files
 		find . -name "*.md" -type f -delete # Remove *.md
 		find . -name "*.png" -type f -delete # Remove *.png
+		find . -name "test-data" -type d -exec rm -r {} + # Remove test-data directories
 	cd ".."
 }
 
