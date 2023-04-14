@@ -19,6 +19,23 @@ It's all very streamlined and nice.
 ![](./.config/yadm/images/01.webp)
 ![](./.config/yadm/images/02.webp)
 
+# Ricing
+
+As you can see, my desktop isn't that complicated, which is kinda the point. It's so not-complicated that uploading my human-unreadable KDE and KWin config would've been more complicated than just making this list:
+1. **Desktop Environment**: KDE
+2. **Window Manager:** KWin + Bismuth
+3. **Global Theme:**
+	a. **Plasma & Application Style:** Breeze
+	b. **Colors:** Catppuccin Mocha
+	c. **Window Decorations:** Bismuth
+	d. **Fonts:**
+		- **General / Small / Toolbar / Menu / Window Title:** Noto Sans
+		- **Fixed Width:** JetBrainsMono Nerd Font Mono
+	e. **Icons:** Tela (Dark)
+	f. **Cursors:** Adwaita
+	g. **Splash Screen:** None
+4. **Wallpaper:** `#1e1e2e`
+
 # The Big Picture
 
 Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; so here's a brief overview of the roles my favorite tools fulfill in my day-to-day life:
