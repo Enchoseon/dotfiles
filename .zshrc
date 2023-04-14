@@ -31,6 +31,9 @@ alias t="${HOME}/Scripts/venv/bin/topydo columns" # Launch topydo columns TUI
 # Auto Editor
 alias auto-editor="${HOME}/Scripts/venv/bin/auto-editor --ffmpeg-location '/usr/bin/ffmpeg' --no-open"
 
+# Emacs
+alias enw="emacs -nw"
+
 # =======
 # Exports
 # =======
