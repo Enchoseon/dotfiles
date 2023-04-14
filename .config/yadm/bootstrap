@@ -30,6 +30,7 @@ function clone {
 		fi
 	fi
 	git clone --depth=1 --branch=master "git@github.com:${REPOSITORY}.git" "${DIRECTORY}" &> /dev/null
+	mkdir -p "${DIRECTORY}"
 	cd "${DIRECTORY}" || echo "Error: Could not find ${DIRECTORY}" || exit
 		rm -rf ".git" ".github" ".circleci" "docs" "images" "tests" "spec" "src" 
 		rm -f "Makefile" "DESCRIPTION" "Dockerfile" "URL" "VERSION" "ZSH_VERSIONS" "Gemfile" "Gemfile.lock" "install_test_zsh.sh" 
