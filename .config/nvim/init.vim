@@ -18,7 +18,7 @@ call plug#begin()
 	" === Cache ===
 	Plug 'lewis6991/impatient.nvim' " Provides: Cache for slightly faster loading of Lua modules
 	" === Aesthetics ===
-	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } " Provides: Catppuccin color scheme
+	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } " Provides: Catppuccin color scheme (remember to run `:CatppuccinCompile`!)
 	Plug 'junegunn/goyo.vim' " Provides: Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
 		Plug 'junegunn/limelight.vim' " Provides: Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
 	" === Markdown ===
@@ -52,9 +52,8 @@ call plug#end()
 " lewis6991/impatient.nvim: Start impatient.nvim
 lua require('impatient')
 
-" junegunn/limelight: Start Limelight with Goyo
-autocmd! User GoyoEnter Limelight 0.2
-autocmd! User GoyoLeave Limelight!
+" catpuccin/nvim: Apply colorscheme
+colorscheme catppuccin
 
 " junegunn/goyo: Increase Goyo"s dimensions
 let g:goyo_height="150%"
