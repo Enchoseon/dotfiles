@@ -29,8 +29,8 @@ function clone {
 			printf "Important: Old folder was found and renamed to %s. Remember to delete it up yourself! \n" "${NEWDIRECTORY}."
 		fi
 	fi
-	git clone --depth=1 --branch=master "git@github.com:${REPOSITORY}.git" "${DIRECTORY}" &> /dev/null
 	mkdir -p "${DIRECTORY}"
+	git clone --depth=1 --branch=master "http://github.com/${REPOSITORY}.git" "${DIRECTORY}" &> /dev/null
 	cd "${DIRECTORY}" || echo "Error: Could not find ${DIRECTORY}" || exit
 		rm -rf ".git" ".github" ".circleci" "docs" "images" "tests" "spec" "src" 
 		rm -f "Makefile" "DESCRIPTION" "Dockerfile" "URL" "VERSION" "ZSH_VERSIONS" "Gemfile" "Gemfile.lock" "install_test_zsh.sh" 
