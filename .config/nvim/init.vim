@@ -15,6 +15,8 @@ syntax on
 " =======
 
 call plug#begin()
+	" === Cache ===
+	Plug 'lewis6991/impatient.nvim' " Provides: Cache for slightly faster loading of Lua modules
 	" === Aesthetics ===
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } " Provides: Catppuccin color scheme
 	Plug 'junegunn/goyo.vim' " Provides: Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
@@ -47,8 +49,8 @@ call plug#begin()
 	Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 call plug#end()
 
-" catpuccin/nvim: Apply colorscheme
-autocmd VimEnter * colorscheme catppuccin-mocha
+" lewis6991/impatient.nvim: Start impatient.nvim
+lua require('impatient')
 
 " junegunn/limelight: Start Limelight with Goyo
 autocmd! User GoyoEnter Limelight 0.2
