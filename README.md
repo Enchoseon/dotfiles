@@ -4,7 +4,7 @@ My dotfiles. Have fun, caveat emptor, blah blah blah.
 
 # The Big Picture
 
-Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; here's a brief overview of all my tools fit together in my day-to-day life.
+Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; so here's a brief overview of the roles my favorite tools fulfill in my day-to-day life:
 
 - **Lecture and Notes**: [Neovim](https://github.com/neovim/neovim) + [Syncthing](https://github.com/syncthing/syncthing) + [Markor](https://github.com/gsantner/markor)
 - **Flashcards**: [Anki](https://github.com/ankitects/anki) + [Ankidroid](https://github.com/ankidroid/Anki-Android)
@@ -20,9 +20,9 @@ Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; he
 - **Multi-Button Mouse**: [Piper](https://github.com/libratbag/piper) + KDE Keyboard Daemon (it's just a GUI for [x11-misc/
 xkeyboard-config](https://packages.gentoo.org/packages/x11-misc/xkeyboard-config))
 
-For an explanation of *how* these tools fit together, see my blog post: https://enchoseon.com/productivity-tools
+To see *how* these tools fulfill their roles, see my (even more) highly opinionated [blog post](https://enchoseon.com/productivity-tools), which is like my meta-dotfiles I guess.
 
-# Licenses / Redistribution
+# Licenses & Redistribution
 
 This repository stores and redistributes some binaries/scripts (e.g. every zsh plugin I use) so that bootstrapping is just a simple and reproducible clone. Many of these binaries/scripts haven't been updated in 2 years (and hopefully shouldn't need to be!) However, a convenient way to update all of them is currently lacking.
 
