@@ -37,7 +37,7 @@ call plug#begin()
 	" === LSP Zero ===
 	" LSP Support
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'} 
+	Plug 'williamboman/mason.nvim', {'do': ':MasonUpdate'}
 	Plug 'williamboman/mason-lspconfig.nvim'
 	" Autocompletion
 	Plug 'hrsh7th/nvim-cmp'
