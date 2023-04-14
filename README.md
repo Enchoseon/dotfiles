@@ -2,6 +2,23 @@
 
 My dotfiles. Have fun, caveat emptor, blah blah blah.
 
+# Bootstrapping Process
+
+> Location: `.config/yadm/bootstrap`
+
+The bootstrap script is an interactive bash file that walks the user through installing things that couldn't be installed by a simple clone (e.g. Firefox tweaks). These are the steps it walks through:
+1. Install Arkenfox + user-overrides.js
+2. Install Cascade + userChrome.css
+3. Update/Install all Zsh Plugins (powerlevel10k + zsh-autosuggestions + zsh-history-substring-search + zsh-syntax-highlighting)
+4. Merge ~/.Xresources (doesn't change the Xresources file)
+
+It's all very streamlined and nice.
+
+# Images
+
+![](./.config/yadm/images/01.webp)
+![](./.config/yadm/images/02.webp)
+
 # The Big Picture
 
 Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; so here's a brief overview of the roles my favorite tools fulfill in my day-to-day life:
