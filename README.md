@@ -25,15 +25,15 @@ As you can see, my desktop isn't that complicated, which is kinda the point. It'
 1. **Desktop Environment**: KDE
 2. **Window Manager:** KWin + Bismuth
 3. **Global Theme:**
-	a. **Plasma & Application Style:** Breeze
-	b. **Colors:** Catppuccin Mocha
-	c. **Window Decorations:** Bismuth
-	d. **Fonts:**
+	- **Plasma & Application Style:** Breeze
+	- **Colors:** Catppuccin Mocha
+	- **Window Decorations:** Bismuth
+	- **Fonts:**
 		- **General / Small / Toolbar / Menu / Window Title:** Noto Sans
 		- **Fixed Width:** JetBrainsMono Nerd Font Mono
-	e. **Icons:** Tela (Dark)
-	f. **Cursors:** Adwaita
-	g. **Splash Screen:** None
+	- **Icons:** Tela (Dark)
+	- **Cursors:** Adwaita
+	- **Splash Screen:** None
 4. **Wallpaper:** `#1e1e2e`
 
 # The Big Picture
