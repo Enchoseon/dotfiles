@@ -102,7 +102,8 @@ WORDCHARS=${WORDCHARS//\/[&.;]} # Don't consider certain characters part of the 
 
 autoload -U compinit promptinit
 compinit
-promptinit; prompt gentoo
+promptinit
+prompt gentoo
 
 # ===========
 # Keybindings
