@@ -27,6 +27,8 @@ call plug#begin()
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " Provide: Markdown preview in-browser (note: use pre-built if you don't have node nad yarn!)
 	Plug 'dkarter/bullets.vim' " Provides: Intuitive bullet-point behavior in Markdown
 	Plug 'ellisonleao/glow.nvim' " Provides: A quick in-terminal preview of a markdown file (useful when you just want to read a markdown file without live-preview editing it in a separate window)
+	" === Vimwiki ===
+	Plug 'vimwiki/vimwiki'
 	" === Pandoc ===
 	Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
 	" === Coding ===
@@ -103,6 +105,7 @@ lua require("lualine").setup({ extensions = { "fugitive" } })
 let g:mkdp_preview_options = { "disable_filename": 1,  } " Don"t display filename in body
 let g:mkdp_theme = "light"
 let g:mkdp_page_title = "${name}"
+let g:mkdp_filetypes = [ "markdown", "vimwiki" ] " Also run on Vimwiki files
 
 " dkarter/bullets.vim: Only activate in Markdown, Text, and Gitcommit
 let g:bullets_enable_in_empty_buffers = 1 " Enable in empty buffers
@@ -116,6 +119,10 @@ lua << EOF
 		height_ratio = 0.9,
 	})
 EOF
+
+" vimwiki/vimwiki
+let g:vimwiki_list = [{"path": "~/Sync/Notes/", "syntax": "markdown", "ext": ".md" }] " Set Vimwiki folder to my Notes folder and use the Markdown extension
+let g:vimwiki_global_ext = 0 " Restrict Vimwiki to Notes folder
 
 " vim-pandoc/vim-pandoc: Set filetype to something MarkdownPreview and Mason will actually detect as Markdown and add ability to execute Pandoc on write and see preview.
 autocmd FileType pandoc set filetype=markdown.pandoc " Enable vim-pandoc on Markdown files. Workaround for https://github.com/vim-pandoc/vim-pandoc/issues/34
