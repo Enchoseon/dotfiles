@@ -21,20 +21,16 @@ call plug#begin()
 	" === Aesthetics ===
 	" Catppuccin color scheme (remember to run `:CatppuccinCompile`!)
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } 
-	" Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
-	Plug 'junegunn/goyo.vim' 
-		" Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
-		Plug 'junegunn/limelight.vim' 
-	" Status line
-	Plug 'nvim-lualine/lualine.nvim' 
-		" Icons for lualine
-		Plug 'nvim-tree/nvim-web-devicons' 
 	" === Export & Preview ===
 	" Integration with pandoc document converter
 	Plug 'vim-pandoc/vim-pandoc' 
 	" Markdown preview in-browser (note: use pre-built if you don't have node and yarn!)
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } 
 	" === Prose ===
+	" Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
+	Plug 'junegunn/goyo.vim' 
+		" Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
+		Plug 'junegunn/limelight.vim' 
 	" Intuitive bullet-point behavior in Markdown
 	Plug 'dkarter/bullets.vim' 
 	" The Vimwiki plugin
@@ -43,7 +39,7 @@ call plug#begin()
 	Plug 'preservim/vim-pencil' 
 		" Seamless and minimal auto-correction (e.g. `teh` -> `the`, `Im` -> `I'm`, etc.)
 		Plug 'preservim/vim-litecorrect' 
-		" The `:Wordy` command for detecting words/statements that are weak, weaselly, idiomatic, jargony, etc.
+	" The `:Wordy` command for detecting words/statements that are weak, weaselly, idiomatic, jargony, etc.
 	Plug 'preservim/vim-wordy' 
 	" === Coding ===
 	" Better highlighting
@@ -54,6 +50,10 @@ call plug#begin()
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
 		" Function library for Telescope
 		Plug 'nvim-lua/plenary.nvim' 
+	" Status line
+	Plug 'nvim-lualine/lualine.nvim' 
+		" Icons for lualine
+		Plug 'nvim-tree/nvim-web-devicons' 
 	" === LSP Zero ===
 	" == LSP Support ==
 	Plug 'neovim/nvim-lspconfig'
