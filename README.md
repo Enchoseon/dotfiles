@@ -14,10 +14,9 @@ The bootstrap script is an interactive bash file that walks the user through ins
 
 It's all very streamlined and nice.
 
-# Images
+# Image
 
 ![](./.config/yadm/images/01.webp)
-![](./.config/yadm/images/02.webp)
 
 # Ricing
 
