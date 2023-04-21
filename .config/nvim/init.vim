@@ -21,6 +21,8 @@ call plug#begin()
 	" === Aesthetics ===
 	" Catppuccin color scheme (remember to run `:CatppuccinCompile`!)
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } 
+	" Smooth-scrolling. WARNING: Causes lots of redraws!
+	Plug 'psliwka/vim-smoothie'
 	" === Export & Preview ===
 	" Integration with pandoc document converter
 	Plug 'vim-pandoc/vim-pandoc' 
