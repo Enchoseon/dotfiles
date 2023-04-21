@@ -1,20 +1,3 @@
-" f3fora/cmp-spell: Add cmp dictionary source
-lua <<EOF
-require("cmp").setup({
-	sources = {
-		{
-			name = "spell",
-			option = {
-				keep_all_entries = false,
-				enable_in_context = function()
-				return true
-				end,
-			},
-		},
-	},
-})
-EOF
-
 " VonHeikemen/lsp-zero.nvim: Setup LSP zero
 lua <<EOF
 	local lsp = require("lsp-zero").preset({
@@ -27,4 +10,24 @@ lua <<EOF
 	end)
 	require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 	lsp.setup()
+EOF
+
+" f3fora/cmp-spell: Add cmp dictionary source
+lua <<EOF
+require("cmp").setup({
+	sources = {
+		{
+			name = "nvim_lsp"
+		},
+		{
+			name = "spell",
+			option = {
+				keep_all_entries = false,
+				enable_in_context = function()
+				return true
+				end,
+			},
+		},
+	},
+})
 EOF
