@@ -110,16 +110,7 @@ let g:mkdp_filetypes = [ "markdown", "vimwiki" ] " Also run on Vimwiki files
 let g:bullets_enable_in_empty_buffers = 1 " Enable in empty buffers
 let g:bullets_enabled_file_types = [ "markdown", "text", "gitcommit" ] " Only enable on Markdown, Text, and Gitcommit
 
-" ellisonleao/glow.nvim: Setup Glow to launch in a larger window
-lua << EOF
-	require("glow").setup({
-		border = "",
-		width_ratio = 0.9,
-		height_ratio = 0.9,
-	})
-EOF
-
-" vimwiki/vimwiki
+" vimwiki/vimwiki: Setup
 let g:vimwiki_list = [{"path": "~/Sync/Notes/", "syntax": "markdown", "ext": ".md" }] " Set Vimwiki folder to my Notes folder and use the Markdown extension
 let g:vimwiki_global_ext = 0 " Restrict Vimwiki to Notes folder
 
