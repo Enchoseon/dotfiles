@@ -46,14 +46,19 @@ call plug#begin()
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 	" Git integration. Most notable is ':G' for arbitrary git commands
 	Plug 'tpope/vim-fugitive' 
-	" Fuzzy finder (optional deps: `fd` and `ripgrep`)
-	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
-		" Function library for Telescope
-		Plug 'nvim-lua/plenary.nvim' 
 	" Status line
 	Plug 'nvim-lualine/lualine.nvim' 
 		" Icons for lualine
 		Plug 'nvim-tree/nvim-web-devicons' 
+	" === Navigation ===
+	" Fuzzy finder (optional deps: `fd` and `ripgrep`)
+	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
+		" Function library for Telescope
+		Plug 'nvim-lua/plenary.nvim' 
+	" Ranger integration with Neovim (do `<Leader>f`!)
+	Plug 'francoiscabrol/ranger.vim'
+		" Tiny plugin to delete a buffer without closing the window
+		Plug 'rbgrouleff/bclose.vim'
 	" === LSP Zero ===
 	" == LSP Support ==
 	Plug 'neovim/nvim-lspconfig'
@@ -77,13 +82,6 @@ call plug#end()
 
 " lewis6991/impatient.nvim: Start impatient.nvim
 lua require('impatient')
-
-" netrw
-let g:netrw_banner = 0 " Hide banner by default (toggle with 'I')
-let g:netrw_preview = 1 " Vertical split when previewing files
-let g:netrw_liststyle = 3 " Tree-style listing
-let g:netrw_winsize = 25 " Shrink netrw to 25% width when previewing a file
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles by default (toggle with 'gh')
 
 " ===================
 " :W to Write as Sudo
