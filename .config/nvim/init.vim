@@ -26,7 +26,6 @@ call plug#begin()
 	" === Markdown ===
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " Provide: Markdown preview in-browser (note: use pre-built if you don't have node nad yarn!)
 	Plug 'dkarter/bullets.vim' " Provides: Intuitive bullet-point behavior in Markdown
-	Plug 'ellisonleao/glow.nvim' " Provides: A quick in-terminal preview of a markdown file (useful when you just want to read a markdown file without live-preview editing it in a separate window)
 	" === Vimwiki ===
 	Plug 'vimwiki/vimwiki'
 	" === Pandoc ===
