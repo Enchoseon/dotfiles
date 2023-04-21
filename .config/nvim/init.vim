@@ -26,8 +26,11 @@ call plug#begin()
 	" === Markdown ===
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " Provide: Markdown preview in-browser (note: use pre-built if you don't have node nad yarn!)
 	Plug 'dkarter/bullets.vim' " Provides: Intuitive bullet-point behavior in Markdown
-	" === Vimwiki ===
-	Plug 'vimwiki/vimwiki'
+	" === Prose ===
+	Plug 'vimwiki/vimwiki' " Provides: The Vimwiki plugin
+	Plug 'preservim/vim-pencil' " Provides: Seamless wrapping tweaks and undo points suited for prose (e.g. undo points on punction)
+		Plug 'preservim/vim-litecorrect' " Provides: Seamless and minimal auto-correction (e.g. `teh` -> `the`, `Im` -> `I'm`, etc.)
+	Plug 'preservim/vim-wordy' " Provides: The `:Wordy` command for detecting words/statements that are weak, weaselly, idiomatic, jargony, etc.
 	" === Pandoc ===
 	Plug 'vim-pandoc/vim-pandoc' " Provides: Integration with pandoc document converter
 	" === Coding ===
@@ -115,6 +118,9 @@ let g:bullets_enabled_file_types = [ "markdown", "text", "gitcommit" ] " Only en
 " vimwiki/vimwiki: Setup
 let g:vimwiki_list = [{"path": "~/Sync/Notes/", "syntax": "markdown", "ext": ".md" }] " Set Vimwiki folder to my Notes folder and use the Markdown extension
 let g:vimwiki_global_ext = 0 " Restrict Vimwiki to Notes folder
+
+" preservim/vim-pencil: Launch various prose plugins automatically and use hard wrapping
+autocmd FileType markdown,vimwiki call pencil#init({"wrap": "soft"}) | call litecorrect#init()
 
 " vim-pandoc/vim-pandoc: Set filetype to something MarkdownPreview and Mason will actually detect as Markdown and add ability to execute Pandoc on write and see preview.
 autocmd FileType pandoc set filetype=markdown.pandoc " Enable vim-pandoc on Markdown files. Workaround for https://github.com/vim-pandoc/vim-pandoc/issues/34
