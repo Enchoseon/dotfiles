@@ -23,10 +23,9 @@ call plug#begin()
 		Plug 'junegunn/limelight.vim' " Provides: Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
 	Plug 'nvim-lualine/lualine.nvim' " Provides: Status line
 		Plug 'nvim-tree/nvim-web-devicons' " Provides: Icons for lualine
-	" === Markdown ===
+	" === Prose ===
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " Provide: Markdown preview in-browser (note: use pre-built if you don't have node nad yarn!)
 	Plug 'dkarter/bullets.vim' " Provides: Intuitive bullet-point behavior in Markdown
-	" === Prose ===
 	Plug 'vimwiki/vimwiki' " Provides: The Vimwiki plugin
 	Plug 'preservim/vim-pencil' " Provides: Seamless wrapping tweaks and undo points suited for prose (e.g. undo points on punction)
 		Plug 'preservim/vim-litecorrect' " Provides: Seamless and minimal auto-correction (e.g. `teh` -> `the`, `Im` -> `I'm`, etc.)
@@ -59,151 +58,6 @@ call plug#end()
 
 " lewis6991/impatient.nvim: Start impatient.nvim
 lua require('impatient')
-
-" catpuccin/nvim: Apply colorscheme
-colorscheme catppuccin
-
-" junegunn/goyo: Increase Goyo"s dimensions
-let g:goyo_height="150%"
-let g:goyo_width="125"
-" junegunn/goyo: Start Goyo automatically when opening a markdown or todo.txt file
-autocmd VimEnter *.md Goyo
-autocmd VimEnter *todo.txt Goyo
-function! s:goyo_enter()
-	" junegunn/limelight: Turn on Limelight
-	Limelight 0.2
-	" nvim-lualine/lualine: Disable Lualine
-	lua require('lualine').hide()
-	" junegunn/goyo: Quit Neovim on :q if this is the last buffer (https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active)
-	" Tip: Use ':Goyo' to toggle Goyo without exiting Neovim
-	let b:quitting = 0
-	let b:quitting_bang = 0
-	autocmd QuitPre <buffer> let b:quitting = 1
-	cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
-function! s:goyo_leave()
-	" junegunn/limelight: Turn off Limelight
-	Limelight!
-	" nvim-lualine/lualine: Reenable Lualine
-	lua require('lualine').hide({unhide=true})
-	" junegunn/goyo: Quit Neovim on :q if this is the last buffer (https://github.com/junegunn/goyo.vim/wiki/Customization#ensure-q-to-quit-even-when-goyo-is-active)
-	" Tip: Use ':Goyo' to toggle Goyo without exiting Neovim
-	if b:quitting && len(filter(range(1, bufnr("$")), "buflisted(v:val)")) == 1
-		if b:quitting_bang
-			qa!
-		else
-			qa
-		endif
-	endif
-endfunction
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
-" junegunn/goyo: Redraw Goyo window when window is resized
-autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif
-
-" nvim-lualine/lualine.nvim: Start Lualine with Fugutive Support
-set noshowmode " No longer needed
-lua require("lualine").setup({ extensions = { "fugitive" } })
-
-" iamcco/markdown-preview: Aesthetic tweaks
-let g:mkdp_preview_options = { "disable_filename": 1,  } " Don"t display filename in body
-let g:mkdp_theme = "light"
-let g:mkdp_page_title = "${name}"
-let g:mkdp_filetypes = [ "markdown", "vimwiki" ] " Also run on Vimwiki files
-
-" dkarter/bullets.vim: Only activate in Markdown, Text, and Gitcommit
-let g:bullets_enable_in_empty_buffers = 1 " Enable in empty buffers
-let g:bullets_enabled_file_types = [ "markdown", "text", "gitcommit" ] " Only enable on Markdown, Text, and Gitcommit
-
-" vimwiki/vimwiki: Setup
-let g:vimwiki_list = [{"path": "~/Sync/Notes/", "syntax": "markdown", "ext": ".md" }] " Set Vimwiki folder to my Notes folder and use the Markdown extension
-let g:vimwiki_global_ext = 0 " Restrict Vimwiki to Notes folder
-
-" preservim/vim-pencil: Launch various prose plugins automatically and use hard wrapping
-autocmd FileType markdown,vimwiki call pencil#init({"wrap": "soft"}) | call litecorrect#init()
-
-" vim-pandoc/vim-pandoc: Set filetype to something MarkdownPreview and Mason will actually detect as Markdown and add ability to execute Pandoc on write and see preview.
-autocmd FileType pandoc set filetype=markdown.pandoc " Enable vim-pandoc on Markdown files. Workaround for https://github.com/vim-pandoc/vim-pandoc/issues/34
-let g:pandoc#modules#disabled = [ "folding" ] " Disable folding module
-function PandocPreview () " Custom function to open a live preview of the current document in Okular. Uses xelatex (dev-texlive/texlive-xetex) to generate the riced PDF.
-	let l:command = "Pandoc pdf -o /tmp/vim-pandoc.pdf --pdf-engine=xelatex -H ~/.config/nvim/catppuccin_pandoc.tex --wrap=preserve"
-	let g:pandoc#command#autoexec_command = l:command
-	let g:pandoc#command#autoexec_on_writes = 1 | execute l:command | :silent !okular "/tmp/vim-pandoc.pdf" &
-endfunction
-command PandocPreview call PandocPreview()
-
-" nvim-treesitter/nvim-treesitter: Enable modules
-lua << EOF
-	require("nvim-treesitter.configs").setup({
-		ensure_installed = {
-			-- Config Files
-			"json",
-			"json5",
-			"yaml",
-			-- Web & Node
-			"twig",
-			"html",
-			"javascript",
-			"css",
-			"typescript",
-			-- Markup
-			"markdown",
-			"todotxt",
-			-- Portable Scripting Languages
-			"bash", 
-			"lua",
-			-- C
-			"c",
-			-- Git
-			"diff",
-			"git_rebase",
-			"gitattributes",
-			"gitcommit",
-			"gitignore",
-			-- Help
-			"help",
-		},
-		auto_install = true,
-		highlight = { 
-			enable = true,
-			additional_vim_regex_highlighting = false,
-		},
-		indent = {
-			enable = true,
-		}
-	})
-EOF
-
-" f3fora/cmp-spell: Add cmp dictionary source
-lua <<EOF
-require("cmp").setup({
-	sources = {
-		{
-			name = "spell",
-			option = {
-				keep_all_entries = false,
-				enable_in_context = function()
-				return true
-				end,
-			},
-		},
-	},
-})
-EOF
-
-" VonHeikemen/lsp-zero.nvim: Setup LSP zero
-lua <<EOF
-	local lsp = require("lsp-zero").preset({
-		manage_nvim_cmp = {
-			set_sources = "recommended"
-		}
-	})
-	lsp.on_attach(function(client, bufnr)
-		lsp.default_keymaps({buffer = bufnr})
-	end)
-	require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-	lsp.setup()
-EOF
 
 " netrw
 let g:netrw_banner = 0 " Hide banner by default (toggle with 'I')
@@ -266,4 +120,3 @@ set scrolloff=8 " Leave space between the top/bottom of the screen and the curso
 " System Integration
 set autoread " Read file if changed
 set clipboard=unnamedplus " Use system keyboard
-
