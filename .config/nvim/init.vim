@@ -46,6 +46,8 @@ call plug#begin()
 	Plug 'hrsh7th/cmp-path' " Provides: Completions based on the filesystem
 	Plug 'saadparwaiz1/cmp_luasnip'
 	Plug 'hrsh7th/cmp-nvim-lsp'
+	" Spell Check
+	Plug 'f3fora/cmp-spell' " Provides: Dictionary completion source based on the built-in spellsuggest
 	" Snippets
 	Plug 'L3MON4D3/LuaSnip'
 	" LSP Zero
@@ -164,6 +166,23 @@ lua << EOF
 			enable = true,
 		}
 	})
+EOF
+
+" f3fora/cmp-spell: Add cmp dictionary source
+lua <<EOF
+require("cmp").setup({
+	sources = {
+		{
+			name = "spell",
+			option = {
+				keep_all_entries = false,
+				enable_in_context = function()
+				return true
+				end,
+			},
+		},
+	},
+})
 EOF
 
 " VonHeikemen/lsp-zero.nvim: Setup LSP zero
