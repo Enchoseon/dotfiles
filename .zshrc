@@ -34,6 +34,9 @@ alias auto-editor="${HOME}/Scripts/venv/bin/auto-editor --ffmpeg-location '/usr/
 # Emacs
 alias enw="emacs -nw"
 
+# Quitly Close Terminal Emulator
+alias :q="exit"
+
 # =======
 # Exports
 # =======
