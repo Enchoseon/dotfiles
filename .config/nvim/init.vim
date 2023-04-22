@@ -101,6 +101,15 @@ com -bar W exe 'w !pkexec tee >/dev/null %:p:S' | setl nomod
 " Start in insert mode at top of file when entering gitcommits
 autocmd FileType gitcommit :1 | :startinsert!
 
+" ==========================
+" Create Undo File Directory
+" ==========================
+
+" https://vi.stackexchange.com/a/53
+if !isdirectory($HOME."/.cache/nvim/undo")
+	call mkdir($HOME."/.cache/nvim/undo", "p", 0700)
+endif
+
 " =====================
 " Other Neovim Settings
 " =====================
@@ -141,3 +150,7 @@ set scrolloff=8 " Leave space between the top/bottom of the screen and the curso
 " System Integration
 set autoread " Read file if changed
 set clipboard=unnamedplus " Use system keyboard
+
+" Save undo files ~/.cache/nvim/undo
+set undodir=~/.cache/nvim/undo
+set undofile
