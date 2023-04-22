@@ -46,3 +46,6 @@ let g:vimwiki_global_ext = 0 " Restrict Vimwiki to Notes folder
 
 " preservim/vim-pencil: Launch various prose plugins automatically and use hard wrapping
 autocmd FileType markdown,vimwiki call pencil#init({"wrap": "soft"}) | call litecorrect#init()
+
+" rhysd/vim-grammarous: Launch automatically when editing markdown, text, or gitcommit files
+let g:grammarous#jar_url = "https://www.languagetool.org/download/LanguageTool-5.9.zip" " LanguageTool version 6 is incompatible with rhysd/vim-grammarous (https://github.com/rhysd/vim-grammarous/issues/110)

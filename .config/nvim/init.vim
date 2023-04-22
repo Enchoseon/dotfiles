@@ -42,7 +42,9 @@ call plug#begin()
 		" Seamless and minimal auto-correction (e.g. `teh` -> `the`, `Im` -> `I'm`, etc.)
 		Plug 'preservim/vim-litecorrect' 
 	" The `:Wordy` command for detecting words/statements that are weak, weaselly, idiomatic, jargony, etc.
-	Plug 'preservim/vim-wordy' 
+	Plug 'preservim/vim-wordy'
+	" LanguageTool support (requires Java 8+)
+	Plug 'rhysd/vim-grammarous'
 	" === Coding ===
 	" Better highlighting
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
