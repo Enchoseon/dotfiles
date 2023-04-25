@@ -15,7 +15,14 @@ show_all = 1
 # Unprioritized items
 [Other]
 title = Other
-filterexpr = (<Z) -system
+filterexpr = due:>yesterday (<Z) -system
+sortexpr = desc:priority,asc:due
+show_all = 1
+
+# Unprioritized items that are overdue
+[Other Overdue]
+title = Other Overdue
+filterexpr = due:<today (<Z) -system
 sortexpr = desc:priority,asc:due
 show_all = 1
 
