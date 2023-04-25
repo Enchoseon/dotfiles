@@ -7,9 +7,9 @@ My dotfiles. Have fun, caveat emptor, blah blah blah.
 > Location: `.config/yadm/bootstrap`
 
 The bootstrap script is an interactive bash file that walks the user through installing things that couldn't be installed by a simple clone (e.g. Firefox tweaks). These are the steps it walks through:
-1. Install Arkenfox + user-overrides.js
-2. Install Cascade + userChrome.css
-3. Update/Install all Zsh Plugins (powerlevel10k + zsh-autosuggestions + zsh-history-substring-search + zsh-syntax-highlighting)
+1. Install [Arkenfox](https://github.com/arkenfox/user.js) + user-overrides.js
+2. Install [Cascade](https://github.com/andreasgrafen/cascade) + userChrome.css
+3. Update/Install all Zsh Plugins ([powerlevel10k](https://github.com/romkatv/powerlevel10k) + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) + [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search) + [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting))
 4. Merge ~/.Xresources (doesn't change the Xresources file)
 
 It's all very streamlined and nice.
@@ -50,8 +50,7 @@ Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; so
 - **Email**: [Claws Mail](https://git.claws-mail.org/)
 - **Pomodoro**: [Potato Redux](https://github.com/Enchoseon/potato-redux)
 - **Ad-Blocking**: [uBlock Origin](https://github.com/gorhill/uBlock) + [hBlock](https://github.com/hectorm/hblock)
-- **Multi-Button Mouse**: [Piper](https://github.com/libratbag/piper) + KDE Keyboard Daemon (it's just a GUI for [x11-misc/
-xkeyboard-config](https://packages.gentoo.org/packages/x11-misc/xkeyboard-config))
+- **Multi-Button Mouse**: [Piper](https://github.com/libratbag/piper) + KDE Keyboard Daemon (it's just a GUI for [x11-misc/xkeyboard-config](https://packages.gentoo.org/packages/x11-misc/xkeyboard-config))
 
 To see *how* these tools fulfill their roles, see my (even more) highly opinionated [blog post](https://enchoseon.com/productivity-tools), which is like my meta-dotfiles I guess.
 
