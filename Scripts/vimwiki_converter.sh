@@ -7,4 +7,4 @@ OUTPUT_FILE="${OUTPUT_FILE%.*}" # Output filename (without any path attached)
 # Create directory
 mkdir -p "${OUTPUT_DIRECTORY}"
 # Run Pandoc
-eval pandoc "-i \"${INPUT_FILE}\" --katex --standalone --highlight-style=pygments --wrap=preserve -f commonmark_x -t html -o \"${OUTPUT_DIRECTORY}/${OUTPUT_FILE}\"" > /dev/null 2>&1
+eval pandoc "-i \"${INPUT_FILE}\" --katex --standalone --highlight-style=pygments --wrap=preserve -f markdown+lists_without_preceding_blankline -t html -o \"${OUTPUT_DIRECTORY}/${OUTPUT_FILE}\"" > /dev/null 2>&1

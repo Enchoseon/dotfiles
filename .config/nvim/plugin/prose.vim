@@ -43,7 +43,7 @@ let g:bullets_enabled_file_types = [ "markdown", "text", "gitcommit" ] " Only en
 " vimwiki/vimwiki: Setup
 let g:vimwiki_list = [{"path": "~/Sync/Notes/", "syntax": "markdown", "ext": ".md", "html_filename_parameterization": 1 }] " Set Vimwiki folder to my Notes folder and use the Markdown extension
 let g:vimwiki_global_ext = 0 " Restrict Vimwiki to Notes folder
-let g:vimwiki_custom_wiki2html=$HOME."/Scripts/vimwiki_converter.sh" " vimwiki/vimwiki: Export Markdown syntax
+let g:vimwiki_custom_wiki2html=$HOME."/Scripts/vimwiki_converter.sh" " Export Markdown syntax
 
 " preservim/vim-pencil: Launch various prose plugins automatically and use hard wrapping
 autocmd FileType markdown,vimwiki call pencil#init({"wrap": "soft"}) | call litecorrect#init()
