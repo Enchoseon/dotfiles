@@ -63,6 +63,10 @@ call plug#begin()
 	Plug 'francoiscabrol/ranger.vim'
 		" Tiny plugin to delete a buffer without closing the window
 		Plug 'rbgrouleff/bclose.vim'
+	" Vimwiki integration with Telescope (:Telescope vimwiki)
+	Plug 'ElPiloto/telescope-vimwiki.nvim'
+	" Undo tree integration with Telescope (:Telescope undo)
+	Plug 'debugloop/telescope-undo.nvim'
 	" === LSP Zero ===
 	" == LSP Support ==
 	Plug 'neovim/nvim-lspconfig'
