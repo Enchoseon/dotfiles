@@ -14,6 +14,7 @@ lua << EOF
 			"typescript",
 			-- Markup
 			"markdown",
+			"markdown_inline",
 			"todotxt",
 			-- Portable Scripting Languages
 			"bash", 
