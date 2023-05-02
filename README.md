@@ -2,9 +2,16 @@
 
 My dotfiles. Have fun, caveat emptor, blah blah blah.
 
-# Bootstrapping Process
+# Installation
 
-> Location: `.config/yadm/bootstrap`
+## Automatic
+
+Using [Yadm](https://yadm.io):
+```bash
+yadm clone https://github.com/Enchoseon/dotfiles --bootstrap
+```
+
+> Bootstrap Script Location: `.config/yadm/bootstrap`
 
 The bootstrap script is an interactive bash file that walks the user through installing things that couldn't be installed by a simple clone (e.g. Firefox tweaks). These are the steps it walks through:
 1. Install [Arkenfox](https://github.com/arkenfox/user.js) + user-overrides.js
@@ -13,6 +20,12 @@ The bootstrap script is an interactive bash file that walks the user through ins
 4. Merge ~/.Xresources (doesn't change the Xresources file)
 
 It's all very streamlined and nice.
+
+## Manual
+
+The safer alternative—in case you aren't me—is to copy-and-paste only what you want into your own dotfiles in order to perpetuate their endless cycle of aimless and mundane existence in the dotfile cycle
+
+Thankfully, I don't do anything crazy with my dotfiles like interspersing logic to create compatibility with every operating system, desktop environment, package manager, and shell; so you can just `git clone` and `mv` what you need.
 
 # Image
 
