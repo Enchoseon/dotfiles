@@ -13,13 +13,12 @@ yadm clone https://github.com/Enchoseon/dotfiles --bootstrap
 
 > Bootstrap Script Location: `.config/yadm/bootstrap`
 
-The bootstrap script is an interactive bash file that walks the user through installing things that couldn't be installed by a simple clone (e.g. Firefox tweaks). These are the steps it walks through:
+The bootstrap script is an additional bash file that can be ran after cloning the dotfiles. It interactively walks the user through things that couldn't be done by a simple clone (e.g. copying Firefox userChrome.css to active profile). These are the steps it walks through:
 1. Install [Arkenfox](https://github.com/arkenfox/user.js) + user-overrides.js
 2. Install [Cascade](https://github.com/andreasgrafen/cascade) + userChrome.css
 3. Update/Install all Zsh Plugins ([powerlevel10k](https://github.com/romkatv/powerlevel10k) + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) + [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search) + [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting))
 4. Merge ~/.Xresources (doesn't change the Xresources file)
-
-It's all very streamlined and nice.
+5. Update/Install [topydo](https://github.com/topydo/topydo) + [auto editor](https://github.com/WyattBlue/auto-editor) into a Python virtual environment in ~/Scripts (aliases are already set up in ~/.zshrc)
 
 ## Manual
 

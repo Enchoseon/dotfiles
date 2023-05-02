@@ -41,6 +41,16 @@ function clone {
 	cd ".."
 }
 
+# Install a Python package into a virtual environment in ~/Scripts
+function pythonInstall {
+	local PACKAGE=$1
+	local DIRECTORY="${HOME}/Scripts"
+	mkdir -p "${DIRECTORY}"
+	cd "${DIRECTORY}" || error "Couldn't access ~/Scripts"
+	python -m venv venv
+	./venv/bin/pip3 install --disable-pip-version-check "${PACKAGE}"
+}
+
 # Print error and exit
 function error {
 	local MESSAGE=$1
@@ -83,6 +93,15 @@ fi
 # Step IV: Merge Xresources
 if prompt "IV. Would you like to run \"xrdb -merge ~/.Xresources\" to apply your current Xresources file? (this does not change your Xresources file)"; then
 	xrdb -merge ~/.Xresources
+fi
+
+# Step V: Install various Python cli tools to ~/Scripts, accessible through aliases in ~/.zshrc
+if prompt "V.1 Would you like to install topydo to a virtual Python environment in ~/Scripts? (https://github.com/topydo/topydo)"; then
+	pythonInstall "topydo"
+	pythonInstall "topydo[prompt]"
+fi
+if prompt "V.2 Would you like to install auto editor to a virtual Python environment in ~/Scripts? (https://github.com/WyattBlue/auto-editor)"; then
+	pythonInstall "auto-editor"
 fi
 
 printf "\e[1;34m%-6s\e[m" "Bootstrap script finished!"
