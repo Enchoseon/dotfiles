@@ -30,7 +30,7 @@ function clone {
 		fi
 	fi
 	mkdir -p "${DIRECTORY}"
-	git clone --depth=1 --branch=master "http://github.com/${REPOSITORY}.git" "${DIRECTORY}" &> /dev/null
+	git clone --depth=1 --branch=master --quiet "http://github.com/${REPOSITORY}.git" "${DIRECTORY}"
 	cd "${DIRECTORY}" || error "Couldn't access ${DIRECTORY}"
 		rm -rf ".git" ".github" ".circleci" "docs" "images" "tests" "spec" "src" 
 		rm -f "Makefile" "DESCRIPTION" "Dockerfile" "URL" "VERSION" "ZSH_VERSIONS" "Gemfile" "Gemfile.lock" "install_test_zsh.sh" 
