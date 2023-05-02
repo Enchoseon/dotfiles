@@ -31,7 +31,7 @@ function clone {
 	fi
 	mkdir -p "${DIRECTORY}"
 	git clone --depth=1 --branch=master "http://github.com/${REPOSITORY}.git" "${DIRECTORY}" &> /dev/null
-	cd "${DIRECTORY}" || echo "Error: Could not find ${DIRECTORY}" || exit
+	cd "${DIRECTORY}" || error "Couldn't access ${DIRECTORY}"
 		rm -rf ".git" ".github" ".circleci" "docs" "images" "tests" "spec" "src" 
 		rm -f "Makefile" "DESCRIPTION" "Dockerfile" "URL" "VERSION" "ZSH_VERSIONS" "Gemfile" "Gemfile.lock" "install_test_zsh.sh" 
 		find . -name '.*' -type f -delete  # Remove hidden files
@@ -41,8 +41,15 @@ function clone {
 	cd ".."
 }
 
+# Print error and exit
+function error {
+	local MESSAGE=$1
+	echo "ERROR: ${MESSAGE}"
+	exit
+}
+
 # Find Firefox Profile Path (https://askubuntu.com/a/354907)
-cd ~/.mozilla/firefox/ || echo "Error: Could not find ~/.mozilla/firefox/" || exit
+cd ~/.mozilla/firefox/ || error "Couldn't access ~/.mozilla/firefox/"
 if [[ $(grep '\[Profile[^0]\]' profiles.ini) ]]
 then FIREFOX_PROFILE=$(grep -E '^\[Profile|^Path|^Default' profiles.ini | grep -1 '^Default=1' | grep '^Path' | cut -c6-)
 else FIREFOX_PROFILE=$(grep 'Path=' profiles.ini | sed 's/^Path=//')
@@ -65,7 +72,7 @@ fi
 # Step III: Update all Zsh plugins
 if prompt "III. Would you like to update powerlevel10k + zsh-autosuggestions + zsh-history-substring-search + zsh-syntax-highlighting?"; then
 	mkdir -p "${HOME}/.zsh"
-	cd "${HOME}/.zsh" || echo "Error: Could not find ~/.zsh/" || exit
+	cd "${HOME}/.zsh" || error "Couldn't access ~/.zsh/"
 	clone "romkatv/powerlevel10k" "powerlevel10k"
 	clone "zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
 	clone "zsh-users/zsh-history-substring-search" "zsh-history-substring-search"
