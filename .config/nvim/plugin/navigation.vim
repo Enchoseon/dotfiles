@@ -16,12 +16,9 @@ nnoremap <leader>vw <cmd>lua require("telescope").extensions.vimwiki.vimwiki()<c
 " <leader>vg to live grep files
 nnoremap <leader>vg <cmd>lua require("telescope").extensions.vimwiki.live_grep()<cr>
 
-" francoiscabrol/ranger.vim: Override netrw
-let g:ranger_replace_netrw = 1
+" stevearc/oil.nvim: Setup Oil.nvim to not show file icons
+lua require("oil").setup({ columns={} })
 
-" netrw: I still use netrw sometimes
-let g:netrw_banner = 0 " Hide banner by default (toggle with 'I')
-let g:netrw_preview = 1 " Vertical split when previewing files
-let g:netrw_liststyle = 3 " Tree-style listing
-let g:netrw_winsize = 25 " Shrink netrw to 25% width when previewing a file
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles by default (toggle with 'gh')
+" netrw: Disable Netrw. Too many bugs :(
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1

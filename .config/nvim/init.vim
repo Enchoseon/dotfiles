@@ -59,10 +59,8 @@ call plug#begin()
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
 		" Function library for Telescope
 		Plug 'nvim-lua/plenary.nvim' 
-	" Ranger integration with Neovim (do `<Leader>f`!)
-	Plug 'francoiscabrol/ranger.vim'
-		" Tiny plugin to delete a buffer without closing the window
-		Plug 'rbgrouleff/bclose.vim'
+	" Esoteric-yet-intuitive filemanager that utilizes the fact that this is Neovim (instead of creating a TUI with Vim-like keybinds)
+	Plug 'stevearc/oil.nvim'
 	" Vimwiki integration with Telescope (:Telescope vimwiki)
 	Plug 'ElPiloto/telescope-vimwiki.nvim'
 	" Undo tree integration with Telescope (:Telescope undo)
