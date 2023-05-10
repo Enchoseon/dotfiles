@@ -104,4 +104,9 @@ if prompt "V.2 Would you like to install auto editor to a virtual Python environ
 	pythonInstall "auto-editor"
 fi
 
+# Step VI: Update/Install Neovim Plugins + Vim Plug using Vim Plug
+if prompt "VI. Would you like to update/install all Neovim plugins + Vim Plug? (Vim Plug is assumed to already be installed)"; then
+	nvim -c "PlugUpgrade |  PlugInstall | PlugUpdate | quitall"
+fi
+
 printf "\e[1;34m%-6s\e[m" "Bootstrap script finished!"

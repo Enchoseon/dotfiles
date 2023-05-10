@@ -19,6 +19,7 @@ The bootstrap script is an additional bash file that can be ran after cloning th
 3. Update/Install all Zsh Plugins ([powerlevel10k](https://github.com/romkatv/powerlevel10k) + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) + [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search) + [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting))
 4. Merge ~/.Xresources (doesn't change the Xresources file)
 5. Update/Install [topydo](https://github.com/topydo/topydo) + [auto editor](https://github.com/WyattBlue/auto-editor) into a Python virtual environment in ~/Scripts (aliases are already set up in ~/.zshrc)
+6. Update/Install Neovim Plugins using Vim Plug (Vim Plug is assumed to already be installed)
 
 ## Manual
 
