@@ -21,7 +21,7 @@ endfunction
 " - DEMO FILE: ~/.config/nvim/pandoc/sample-mla.md
 command PandocLivePreview call PandocLivePreview()
 function PandocMarkdownToMla ()
-	let l:command = "Pandoc pdf -f markdown+hard_line_breaks -o /tmp/nvim-pandoc-mla.pdf --pdf-engine=xelatex --template ~/.config/nvim/markdown-to-mla.template --standalone --resource-path .:~/.config/nvim/"
+	let l:command = "Pandoc pdf -f markdown+hard_line_breaks -o /tmp/nvim-pandoc-mla.pdf --pdf-engine=xelatex --template ~/.config/nvim/pandoc/markdown-to-mla.template --standalone --resource-path .:~/.config/nvim/pandoc/"
 	execute l:command
 endfunction
 command PandocMarkdownToMla call PandocMarkdownToMla()
