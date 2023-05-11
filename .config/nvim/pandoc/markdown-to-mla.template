@@ -1,0 +1,9 @@
+\documentclass[12pt,letterpaper]{article}
+	\usepackage{ifpdf}
+	\usepackage{mla}
+	\begin{document}
+		\begin{mla}{$firstName$}{$lastName$}{$professor$}{$class$}{$date$}{$title$}
+			$body$
+		\end{mla}
+	\end{document}
+\end{document}

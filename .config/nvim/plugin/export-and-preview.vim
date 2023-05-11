@@ -17,7 +17,20 @@ function PandocLivePDFPreview ()
 	let g:pandoc#command#autoexec_command = l:command
 	let g:pandoc#command#autoexec_on_writes = 1 | execute l:command | :silent !okular "/tmp/nvim-pandoc.pdf" &
 endfunction
-command PandocPreview call PandocPreview()
+" Custom function to export Markdown files to MLA-formatted PDFs.
+" - DEMO FILE: ~/.config/nvim/pandoc/sample-mla.md
+command PandocLivePreview call PandocLivePreview()
+function PandocMarkdownToMla ()
+	let l:command = "Pandoc pdf -f markdown+hard_line_breaks -o /tmp/nvim-pandoc-mla.pdf --pdf-engine=xelatex --template ~/.config/nvim/markdown-to-mla.template --standalone --resource-path .:~/.config/nvim/"
+	execute l:command
+endfunction
+command PandocMarkdownToMla call PandocMarkdownToMla()
+" Custom function to count number of paged in exported Mla-formatted PDF (https://stackoverflow.com/a/36801253)
+function PandocMarkdownToMlaPageCount ()
+	let l:command = "!pdftotext /tmp/nvim-pandoc-mla.pdf - | grep -c $'\f'"
+	execute l:command
+endfunction
+command PandocMarkdownToMlaPageCount call PandocMarkdownToMlaPageCount()
 
 " iamcco/markdown-preview: Aesthetic tweaks
 let g:mkdp_preview_options = { "disable_filename": 1,  } " Don"t display filename in body

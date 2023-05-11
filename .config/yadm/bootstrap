@@ -109,4 +109,12 @@ if prompt "VI. Would you like to update/install all Neovim plugins + Vim Plug? (
 	nvim -c "PlugUpgrade |  PlugInstall | PlugUpdate | quitall"
 fi
 
+# Step VII: Install mla.sty into TeX Home directory so that it can be used by XeLaTeX to convert academic Markdown into MLA-formatted PDFs (see: ~/.config/nvim/pandoc/sample-mla.*)
+TEX_HOME=$(kpsewhich -var-value=TEXMFHOME)
+if prompt "VII. Would you like to install mla.sty into your TeX home directory (${TEX_HOME})? This makes it accessible to XeLaTeX for exporting academic Markdown to MLA-formatted PDFs from Neovim (see: ~/.config/nvim/pandoc/sample-mla.* for a demo)"; then
+	INSTALL_DIR="${TEX_HOME}/tex/latex/local/"
+	mkdir -p "${INSTALL_DIR}"
+	cp "${HOME}/.config/yadm/xelatex/mla.sty" "${INSTALL_DIR}"
+fi
+
 printf "\e[1;34m%-6s\e[m" "Bootstrap script finished!"
