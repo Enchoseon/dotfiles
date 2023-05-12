@@ -1,6 +1,12 @@
 \documentclass[12pt,letterpaper]{article}
+	% Provide: mla-paper package
 	\usepackage{ifpdf}
 	\usepackage{mla}
+	% Fix: Missing \st for strikethrough
+	\usepackage{soul}
+	% Fix: Missing \tightlist for bullet-points
+	\providecommand{\tightlist}{%
+		\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 	\begin{document}
 		\begin{mla}{$firstName$}{$lastName$}{$professor$}{$class$}{$date$}{$title$}
 			$body$
