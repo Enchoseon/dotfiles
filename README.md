@@ -1,37 +1,44 @@
-# Encho's Dotfiles
-
-My dotfiles. Have fun, caveat emptor, blah blah blah.
+<div align="center">
+	<h1>Encho's Dotfiles</h1>
+	<p>Prose and code at the speed of thought.</p>
+	<em><strong>REMINDER: CAVEAT EMPTOR</strong></em>
+</div>
 
 # Installation
 
-## Automatic
+## Semi-Automatic
 
-Using [Yadm](https://yadm.io):
+Using [Yadm](https://yadm.io) *(note: this will overwrite any existing dotfiles that are in the way)*:
 ```bash
-yadm clone https://github.com/Enchoseon/dotfiles --bootstrap
+yadm clone https://github.com/Enchoseon/dotfiles --no-bootstrap
+yadm checkout ~
+yadm bootstrap
 ```
 
 > Bootstrap Script Location: `.config/yadm/bootstrap`
 
-The bootstrap script is an additional bash file that can be ran after cloning the dotfiles. It interactively walks the user through things that couldn't be done by a simple clone (e.g. copying Firefox userChrome.css to active profile). These are the steps it walks through:
+The bootstrap script is an additional bash file that can be ran after cloning the dotfiles (`yadm bootstrap`). It interactively walks the user through things that couldn't be done by a simple clone (e.g. copying Firefox userChrome.css to active profile).
+
+These are the steps it walks through:
 1. Install [Arkenfox](https://github.com/arkenfox/user.js) + user-overrides.js
 2. Install [Cascade](https://github.com/andreasgrafen/cascade) + userChrome.css
 3. Update/Install all Zsh Plugins ([powerlevel10k](https://github.com/romkatv/powerlevel10k) + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) + [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search) + [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting))
 4. Merge ~/.Xresources (doesn't change the Xresources file)
-5. Update/Install [topydo](https://github.com/topydo/topydo) + [auto editor](https://github.com/WyattBlue/auto-editor) into a Python virtual environment in ~/Scripts (aliases are already set up in ~/.zshrc)
+5. Update/Install [topydo](https://github.com/topydo/topydo) + [auto editor](https://github.com/WyattBlue/auto-editor) into a Python virtual environment in `~/Scripts` (aliases are already set up in `~/.zshrc`)
 6. Update/Install Neovim Plugins using Vim Plug (Vim Plug is assumed to already be installed)
+7. Install [mla.sty](https://github.com/Enchoseon/dotfiles/#mla-paper) into TeX home directory
 
 ## Manual
 
-The safer alternative—in case you aren't me—is to copy-and-paste only what you want into your own dotfiles in order to perpetuate their endless cycle of aimless and mundane existence in the dotfile cycle
+The safer alternative—in case you aren't me—is to copy-and-paste only what you want into your own dotfiles and push those changes to your own repo in order to perpetuate their endless cycle of aimless and mundane existence in the dotfile ecosystem.
 
-Thankfully, I don't do anything crazy with my dotfiles like interspersing logic to create compatibility with every operating system, desktop environment, package manager, and shell; so you can just `git clone` and `mv` what you need.
+I spend most of my time in Neovim and Firefox, so most of the interesting stuff is in [`.config/nvim/`](https://github.com/Enchoseon/dotfiles/tree/master/.config/nvim) and [`.config/yadm/firefox/`](https://github.com/Enchoseon/dotfiles/tree/master/.config/yadm/firefox). You may want to manually copy over the `.config/yadm/` folder to use some of its convenience features as well. Most of the files needed for the bootstrap script to function are contained within `.config/yadm` and the folder can be safely deleted after bootstrapping.
 
-# Image
-
-![](./.config/yadm/images/01.webp)
+Be careful about copying over things at random. For example, copying over my git config without understanding it could mean breaking cloning from GitHub if you don't have SSH keys set up. This isn't a serious problem, removing the lines from the config file will restore everything, but I can't guarantee that every problem will be as easy or reversible.
 
 # Ricing
+
+![Screenshot of my desktop with an impractical number of windows open to showcase my tiling setup](./.config/yadm/images/01.webp)
 
 As you can see, my desktop isn't that complicated, which is kinda the point. It's so not-complicated that uploading my human-unreadable KDE and KWin config would've been more complicated than just making this list:
 1. **Desktop Environment**: KDE
@@ -50,7 +57,7 @@ As you can see, my desktop isn't that complicated, which is kinda the point. It'
 
 # The Big Picture
 
-Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; so here's a brief overview of the roles my favorite tools fulfill in my day-to-day life:
+I use a lot of different tools in my day-to-day life that don't even have dotfiles to store here. Think of this list as my "meta-dotfiles".
 
 - **Lecture and Notes**: [Neovim](https://github.com/neovim/neovim) + [Syncthing](https://github.com/syncthing/syncthing) + [Markor](https://github.com/gsantner/markor)
 - **Flashcards**: [Anki](https://github.com/ankitects/anki) + [Ankidroid](https://github.com/ankidroid/Anki-Android)
@@ -65,7 +72,7 @@ Tools don't exist in a vacuum and I don't have dotfiles for every tool I use; so
 - **Ad-Blocking**: [uBlock Origin](https://github.com/gorhill/uBlock) + [hBlock](https://github.com/hectorm/hblock)
 - **Multi-Button Mouse**: [Piper](https://github.com/libratbag/piper) + KDE Keyboard Daemon (it's just a GUI for [x11-misc/xkeyboard-config](https://packages.gentoo.org/packages/x11-misc/xkeyboard-config))
 
-To see *how* these tools fulfill their roles, see my (even more) highly opinionated [blog post](https://enchoseon.com/productivity-tools), which is like my meta-dotfiles I guess.
+*See my (even more) opinionated [blog post](https://enchoseon.com/productivity-tools) explaining how and why I use these tools in excruciating detail.*
 
 # Licenses & Redistribution
 
