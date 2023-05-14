@@ -7,24 +7,24 @@ let g:pandoc#modules#disabled = [ "folding" ]
 " === Custom Pandoc Functions ===
 " - NOTE: xelatex (dev-texlive/texlive-xetex) is used to generate the PDFs!
 " Custom function to open a live preview of the current document in Okular. 
-" - I never use this. Markdown-Preview.nvim is more convenient for live
-"   preview, my custom Wiki2Html is more convenient for exporting my notes
-"   into a portable format I can view without launching Neovim (plus I get to
-"   use KaTeX, which means less LaTeX boilerplate), and PandocMarkdownToMla
-"   satisfies 99% of my exporting needs alongside Pandoc.nvim.
-function PandocLivePDFPreview () 
+function PandocPDFPreview () 
 	let l:command = "Pandoc pdf -o /tmp/nvim-pandoc.pdf --pdf-engine=xelatex -H ~/.config/nvim/pandoc/catppuccin_pandoc.tex --wrap=preserve"
-	let g:pandoc#command#autoexec_command = l:command
-	let g:pandoc#command#autoexec_on_writes = 1 | execute l:command | :silent !okular "/tmp/nvim-pandoc.pdf" &
+	silent exec l:command
+	exec "autocmd BufWritePost * silent exec '" .. l:command .. "'"
+	silent exec "!sleep 1; okular '/tmp/nvim-pandoc.pdf' &"
 endfunction
-" Custom function to export Markdown files to MLA-formatted PDFs.
-" - DEMO FILE: ~/.config/nvim/pandoc/sample-mla.md
-command PandocLivePreview call PandocLivePreview()
-function PandocMarkdownToMla ()
+" Custom function to export Markdown files to MLA-formatted PDFs (DEMO FILE: ~/.config/nvim/pandoc/sample-mla.md)
+command PandocPDFPreview call PandocPDFPreview()
+function PandocMarkdownToMla (preview=0)
 	let l:command = "Pandoc pdf -f markdown+hard_line_breaks -o /tmp/nvim-pandoc-mla.pdf --pdf-engine=xelatex --template ~/.config/nvim/pandoc/markdown-to-mla.template --standalone --resource-path .:~/.config/nvim/pandoc/"
-	execute l:command
+	silent exec l:command
+	if a:preview
+		exec "autocmd BufWritePost * silent exec '" .. l:command .. "'"
+		silent exec "!sleep 1; okular '/tmp/nvim-pandoc-mla.pdf' &"
+	endif
 endfunction
 command PandocMarkdownToMla call PandocMarkdownToMla()
+command PandocMarkdownToMlaPreview call PandocMarkdownToMla(1)
 " Custom function to count number of paged in exported Mla-formatted PDF (https://stackoverflow.com/a/36801253)
 function PandocMarkdownToMlaPageCount ()
 	let l:command = "!pdftotext /tmp/nvim-pandoc-mla.pdf - | grep -c $'\f'"
