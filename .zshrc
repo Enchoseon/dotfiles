@@ -23,6 +23,9 @@ alias nas="ranger ${HOME}/Sync/NAS" # ... in my NAS directory
 alias notes="ranger ${HOME}/Sync/Notes/Personal" # ... in my [personal] notes directory
 alias school="ranger '${HOME}/Sync/Notes/School/Spring 2023'" # ... in my school directory
 
+# Quick Notes
+alias n="vi ${HOME}/Sync/Notes/Personal/Quicknote.md"
+
 # Todo.txt
 alias todo="vi -c ':set filetype=todotxt' ${HOME}/Sync/Notes/todo.txt" # Edit Todo.txt in Neovim
 alias topydo="${HOME}/Scripts/venv/bin/topydo" # Launch topydo
