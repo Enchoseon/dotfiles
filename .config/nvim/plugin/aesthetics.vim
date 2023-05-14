@@ -16,10 +16,12 @@ lua << EOF
 				number = false, -- Hide number column
 				relativenumber = false, -- Hide relative numbers
 			}
-		}
+		},
 	})
 EOF
 
-" nvim-lualine/lualine.nvim: Start Lualine with Fugitive Support
-set noshowmode " No longer needed
+" folke/twilight.nvim: Exclude Markdown from dimming (only looks good with code)
+lua require("twilight").setup({ exclude = { "markdown", "vimwiki" } })
+
+" nvim-lualine/lualine.nvim: Setup Lualine with Fugitive support
 lua require("lualine").setup({ extensions = { "fugitive" } })
