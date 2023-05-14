@@ -12,3 +12,6 @@ autocmd FileType markdown,vimwiki call pencil#init({"wrap": "soft"}) | call lite
 
 " rhysd/vim-grammarous: Launch automatically when editing markdown, text, or gitcommit files
 let g:grammarous#jar_url = "https://www.languagetool.org/download/LanguageTool-5.9.zip" " LanguageTool version 6 is incompatible with rhysd/vim-grammarous (https://github.com/rhysd/vim-grammarous/issues/110)
+
+" nvim-telescope/telescope.nvim: Replace default spell suggest menu with Telescope
+map z= :Telescope spell_suggest theme=cursor<cr>
