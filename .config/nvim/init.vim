@@ -24,9 +24,9 @@ call plug#begin()
 	" Smooth-scrolling. WARNING: Causes lots of redraws!
 	Plug 'psliwka/vim-smoothie'
 	" Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
-	Plug 'junegunn/goyo.vim' 
-		" Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
-		Plug 'junegunn/limelight.vim' 
+	Plug 'folke/zen-mode.nvim' 
+		" Dimming of all lines except ones near your cursor (uses TreeSitter for dimming)
+		Plug 'folke/twilight.nvim' 
 	" === Export & Preview ===
 	" Integration with pandoc document converter
 	Plug 'vim-pandoc/vim-pandoc' 
