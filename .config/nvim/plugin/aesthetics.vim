@@ -20,5 +20,6 @@ lua << EOF
 	})
 EOF
 
-" folke/twilight.nvim: Setup
-lua require("twilight").setup({})
+" nvim-lualine/lualine.nvim: Start Lualine with Fugitive Support
+set noshowmode " No longer needed
+lua require("lualine").setup({ extensions = { "fugitive" } })

@@ -41,6 +41,3 @@ lua << EOF
 	})
 EOF
 
-" nvim-lualine/lualine.nvim: Start Lualine with Fugutive Support
-set noshowmode " No longer needed
-lua require("lualine").setup({ extensions = { "fugitive" } })

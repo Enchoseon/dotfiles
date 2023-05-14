@@ -27,6 +27,10 @@ call plug#begin()
 	Plug 'folke/zen-mode.nvim' 
 		" Dimming of all lines except ones near your cursor (uses TreeSitter for dimming)
 		Plug 'folke/twilight.nvim' 
+	" Status line
+	Plug 'nvim-lualine/lualine.nvim' 
+		" Icons for lualine
+		Plug 'nvim-tree/nvim-web-devicons' 
 	" === Export & Preview ===
 	" Integration with pandoc document converter
 	Plug 'vim-pandoc/vim-pandoc' 
@@ -50,10 +54,6 @@ call plug#begin()
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 	" Git integration. Most notable is ':G' for arbitrary git commands
 	Plug 'tpope/vim-fugitive' 
-	" Status line
-	Plug 'nvim-lualine/lualine.nvim' 
-		" Icons for lualine
-		Plug 'nvim-tree/nvim-web-devicons' 
 	" === Navigation ===
 	" Fuzzy finder (optional deps: `fd` and `ripgrep`)
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
