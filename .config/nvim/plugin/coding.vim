@@ -41,3 +41,5 @@ lua << EOF
 	})
 EOF
 
+" lukas-reineke/indent-blankline.nvim: Enable context
+lua require("indent_blankline").setup({ show_current_context = true, show_current_context_start = true })

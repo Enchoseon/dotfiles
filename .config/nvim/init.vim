@@ -54,6 +54,8 @@ call plug#begin()
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 	" Git integration. Most notable is ':G' for arbitrary git commands
 	Plug 'tpope/vim-fugitive' 
+	" Contextual indentation highlighting
+	Plug 'lukas-reineke/indent-blankline.nvim'
 	" === Navigation ===
 	" Fuzzy finder (optional deps: `fd` and `ripgrep`)
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
@@ -141,10 +143,6 @@ set wrap
 set number
 set relativenumber
 set ruler
-
-" Show vertical bar in-between tabs
-set listchars=tab:\|\ " Trailing space is intentional
-set list
 
 " Better Scrolling
 set scrolloff=8 " Leave space between the top/bottom of the screen and the cursor.
