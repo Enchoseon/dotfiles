@@ -59,7 +59,7 @@ call plug#begin()
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
 		" Function library for Telescope
 		Plug 'nvim-lua/plenary.nvim' 
-	" Esoteric-yet-intuitive filemanager that utilizes the fact that this is Neovim (instead of creating a TUI with Vim-like keybinds)
+	" Edit filesystem like a buffer (netrw replacement)
 	Plug 'stevearc/oil.nvim'
 	" Vimwiki integration with Telescope (:Telescope vimwiki)
 	Plug 'ElPiloto/telescope-vimwiki.nvim'
