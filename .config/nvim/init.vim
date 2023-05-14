@@ -23,16 +23,16 @@ call plug#begin()
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' } 
 	" Smooth-scrolling. WARNING: Causes lots of redraws!
 	Plug 'psliwka/vim-smoothie'
+	" Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
+	Plug 'junegunn/goyo.vim' 
+		" Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
+		Plug 'junegunn/limelight.vim' 
 	" === Export & Preview ===
 	" Integration with pandoc document converter
 	Plug 'vim-pandoc/vim-pandoc' 
 	" Markdown preview in-browser (note: use pre-built if you don't have node and yarn!)
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } 
 	" === Prose ===
-	" Removal of unnecessary UI elements and the addition of margins for readability while writing Markdown
-	Plug 'junegunn/goyo.vim' 
-		" Dimming of all lines except ones near your cursor (requires a color scheme to do color-dimming calculations)
-		Plug 'junegunn/limelight.vim' 
 	" Intuitive bullet-point behavior in Markdown
 	Plug 'dkarter/bullets.vim' 
 	" The Vimwiki plugin
