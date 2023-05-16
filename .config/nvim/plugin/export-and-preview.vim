@@ -5,32 +5,32 @@ autocmd FileType pandoc set filetype=markdown.pandoc
 " Disable folding module
 let g:pandoc#modules#disabled = [ "folding" ] 
 " === Custom Pandoc Functions ===
-" - NOTE: xelatex (dev-texlive/texlive-xetex) is used to generate the PDFs!
-" Custom function to open a live preview of the current document in Okular. 
-function PandocPDFPreview () 
-	let l:command = "Pandoc pdf -o /tmp/nvim-pandoc.pdf --pdf-engine=xelatex -H ~/.config/nvim/pandoc/catppuccin_pandoc.tex --wrap=preserve"
+" Custom internal function to convert a Markdown file to a PDF with Pandoc using XeLaTeX.
+function PandocMultitool (outputPath, pandocArgs, livePreview=0)
+	let l:baseCommand = "Pandoc pdf --from markdown+hard_line_breaks --pdf-engine=xelatex --wrap=preserve --resource-path .:~/.config/nvim/pandoc/"
+	let l:command = l:baseCommand .. " --output \"" .. a:outputPath .. "\" " .. a:pandocArgs
 	silent exec l:command
-	exec "autocmd BufWritePost * silent exec '" .. l:command .. "'"
-	silent exec "!sleep 1; okular '/tmp/nvim-pandoc.pdf' &"
-endfunction
-" Custom function to export Markdown files to MLA-formatted PDFs (DEMO FILE: ~/.config/nvim/pandoc/sample-mla.md)
-command PandocPDFPreview call PandocPDFPreview()
-function PandocMarkdownToMla (preview=0)
-	let l:command = "Pandoc pdf -f markdown+hard_line_breaks -o /tmp/nvim-pandoc-mla.pdf --pdf-engine=xelatex --template ~/.config/nvim/pandoc/markdown-to-mla.template --standalone --resource-path .:~/.config/nvim/pandoc/"
-	silent exec l:command
-	if a:preview
-		exec "autocmd BufWritePost * silent exec '" .. l:command .. "'"
-		silent exec "!sleep 1; okular '/tmp/nvim-pandoc-mla.pdf' &"
+  	if a:livePreview
+  		silent exec "autocmd BufWritePost * silent exec '" .. l:command .. "'"
+		let l:xdgHack = "call jobstart(\"xdg-open '" .. a:outputPath .. "'\")" " HACK: https://bugs.kde.org/show_bug.cgi?id=442721#c10
+		call timer_start(3000, { tid -> execute(l:xdgHack)}) " HACK: Delay opening file to avoid opening a non-existent file
 	endif
 endfunction
-command PandocMarkdownToMla call PandocMarkdownToMla()
-command PandocMarkdownToMlaPreview call PandocMarkdownToMla(1)
-" Custom function to count number of paged in exported Mla-formatted PDF (https://stackoverflow.com/a/36801253)
-function PandocMarkdownToMlaPageCount ()
-	let l:command = "!pdftotext /tmp/nvim-pandoc-mla.pdf - | grep -c $'\f'"
-	execute l:command
+" Custom functions to create a riced PDF with the Catppuccin Mocha theme.
+command PandocMarkdownToPdf call PandocMultitool("/tmp/nvim-pandoc.pdf", "-H ~/.config/nvim/pandoc/catppuccin_pandoc.tex")
+command PandocMarkdownToPdfLivePreview call PandocMultitool("/tmp/nvim-pandoc.pdf", "-H ~/.config/nvim/pandoc/catppuccin_pandoc.tex", 1)
+" Custom functions to create a riced PDF with the Catppuccin Mocha theme
+command PandocMarkdownToMla call PandocMultitool("/tmp/nvim-pandoc-mla.pdf", "--template ~/.config/nvim/pandoc/markdown-to-mla.template")
+command PandocMarkdownToMlaLivePreview call PandocMultitool("/tmp/nvim-pandoc-mla.pdf", "--template ~/.config/nvim/pandoc/markdown-to-mla.template", 1)
+" Custom function to count the number of pages in a PDF (https://stackoverflow.com/a/36801253)
+function MlaPdfStats (inputPath)
+	let l:pageCount = system("pdftotext '" .. a:inputPath .. "' - | grep -c $'\f'")
+	let l:wordCount = system("pdftotext '" .. a:inputPath .. "' - | wc -w")
+	echo "Page Count: " .. l:pageCount
+	echo "Word Count: " .. l:pageCount
 endfunction
-command PandocMarkdownToMlaPageCount call PandocMarkdownToMlaPageCount()
+" Custom function to get the current page and word count of the last-exported MLA pdf
+command MlaPdfStats call MlaPdfStats("/tmp/nvim-pandoc-mla.pdf")
 
 " iamcco/markdown-preview: Aesthetic tweaks
 let g:mkdp_preview_options = { "disable_filename": 1,  } " Don"t display filename in body
