@@ -31,6 +31,12 @@ call plug#begin()
 	Plug 'nvim-lualine/lualine.nvim' 
 		" Icons for lualine
 		Plug 'nvim-tree/nvim-web-devicons' 
+	" Experimental UI replacement for Neovim
+	Plug 'folke/noice.nvim'
+		" Notification manager
+		Plug 'rcarriga/nvim-notify'
+		" UI Library for noice
+		Plug 'MunifTanjim/nui.nvim'
 	" === Export & Preview ===
 	" Integration with pandoc document converter
 	Plug 'vim-pandoc/vim-pandoc' 

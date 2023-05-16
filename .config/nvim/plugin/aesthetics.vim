@@ -25,3 +25,9 @@ lua require("twilight").setup({ exclude = { "markdown", "vimwiki" } })
 
 " nvim-lualine/lualine.nvim: Setup Lualine with Fugitive support
 lua require("lualine").setup({ extensions = { "fugitive" } })
+
+" folke/noice.nvim: Setup
+lua vim.notify = require("noice").setup()
+
+" rcarriga/nvim-notify: Load Telescope extension
+lua require("telescope").load_extension("notify") 
