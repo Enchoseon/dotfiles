@@ -2,7 +2,7 @@
 " Boilerplate
 " ===========
 
-" Don"t be vi-compatible
+" Don't be vi-compatible
 set nocompatible
 
 " Plugins and syntax highlighting
