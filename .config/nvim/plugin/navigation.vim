@@ -2,15 +2,15 @@
 lua << EOF
 	require("telescope").setup{
 		defaults = {
-			path_display = "smart",
+			path_display = { "smart" },
 			color_devicons = false
 		}
 	}
-	require("telescope").load_extension("vimwiki")
 	require("telescope").load_extension("undo")
 EOF
 
-" ElPiloto/telescope-vimwiki.nvim: Mappings
+" ElPiloto/telescope-vimwiki.nvim: Load Telescope extension
+lua require("telescope").load_extension("vimwiki")
 " <leader>vw to search filenames
 nnoremap <leader>vw <cmd>lua require("telescope").extensions.vimwiki.vimwiki()<cr>
 " <leader>vg to live grep files
