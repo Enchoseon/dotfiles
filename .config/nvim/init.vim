@@ -73,6 +73,8 @@ call plug#begin()
 	Plug 'ElPiloto/telescope-vimwiki.nvim'
 	" Undo tree integration with Telescope (:Telescope undo)
 	Plug 'debugloop/telescope-undo.nvim'
+	" Extend "%" to language-specific words using TreeSitter
+	Plug 'andymass/vim-matchup'
 	" === LSP Zero ===
 	" == LSP Support ==
 	Plug 'neovim/nvim-lspconfig'

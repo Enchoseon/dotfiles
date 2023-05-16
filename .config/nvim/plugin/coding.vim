@@ -37,6 +37,9 @@ lua << EOF
 		},
 		indent = {
 			enable = true,
+		},
+		matchup = { -- (andymass/vim-matchup)
+			enable = true,
 		}
 	})
 EOF
