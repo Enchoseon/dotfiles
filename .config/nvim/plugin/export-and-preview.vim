@@ -7,7 +7,7 @@ let g:pandoc#modules#disabled = [ "folding" ]
 " === Custom Pandoc Functions ===
 " Internal function to convert a Markdown file to a PDF with Pandoc using XeLaTeX.
 function PandocMultitool (outputPath, pandocArgs, livePreview=0)
-	let l:baseCommand = "Pandoc pdf --from markdown+hard_line_breaks --pdf-engine=xelatex --wrap=preserve --resource-path .:~/.config/nvim/pandoc/"
+	let l:baseCommand = "Pandoc pdf --from markdown+hard_line_breaks+lists_without_preceding_blankline --pdf-engine=xelatex --wrap=preserve --resource-path .:~/.config/nvim/pandoc/"
 	let l:command = l:baseCommand .. " --output \"" .. a:outputPath .. "\" " .. a:pandocArgs
 	silent exec l:command
   	if a:livePreview
