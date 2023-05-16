@@ -7,6 +7,8 @@
 	% Fix: Missing \tightlist for bullet-points
 	\providecommand{\tightlist}{%
 		\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+	% Fix: Missing package for non-MLA headings and subheadings
+	\usepackage{hyperref}
 	% Feature: Use default text when YAML variable isn't set
 	\newcommand\default[2]{%
 		\if\relax\detokenize{#1}\relax{#2}\else{#1}\fi%
