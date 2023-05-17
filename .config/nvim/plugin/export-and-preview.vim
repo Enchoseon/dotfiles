@@ -27,7 +27,7 @@ function MlaPdfStats (inputPath)
 	let l:pageCount = system("pdftotext '" .. a:inputPath .. "' - | grep -c $'\f'")
 	let l:wordCount = system("pdftotext '" .. a:inputPath .. "' - | wc -w")
 	echo "Page Count: " .. l:pageCount
-	echo "Word Count: " .. l:pageCount
+	echo "Word Count: " .. l:wordCount
 endfunction
 " Function to get the current page and word count of the last-exported MLA pdf
 command MlaPdfStats call MlaPdfStats("/tmp/nvim-pandoc-mla.pdf")
