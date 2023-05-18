@@ -1,36 +1,39 @@
 \documentclass[12pt,letterpaper]{article}
-	% Provide: mla-paper package
-	\usepackage{ifpdf}
-	\usepackage{mla}
-	% Fix: Missing \st for strikethrough
-	\usepackage{soul}
-	% Fix: Missing \tightlist for bullet-points
-	\providecommand{\tightlist}{%
-		\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-	% Fix: Missing package for non-MLA headings and subheadings
-	\usepackage{hyperref}
-	% Feature: Use default text when YAML variable isn't set
-	\newcommand\default[2]{%
-		\if\relax\detokenize{#1}\relax{#2}\else{#1}\fi%
-	}
-	% Feature: Use today's date if time isn't given
-	\usepackage[nodayofweek]{datetime}
-	% Begin document
-	\begin{document}
-		\begin{mla}{%
-			\default{$firstName$}{John}
-		}{%
-			\default{$lastName$}{Doe}
-		}{%
-			\default{$professor$}{Professor Foobius Bar}
-		}{%
-			\default{$class$}{ABC 1234}
-		}{%
-			\default{$date$}{\shortdate\today}
-		}{%
-			\default{$title$}{Title}
-		}%
-			$body$
-		\end{mla}
-	\end{document}
+% Provide: mla-paper package
+\usepackage{ifpdf}
+\usepackage{mla}
+% Fix: Missing \st for strikethrough
+\usepackage{soul}
+% Fix: Missing \tightlist for bullet-points
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Fix: Missing package for non-MLA headings and subheadings
+\usepackage{hyperref}
+% Feature: Use default text when YAML variable isn't set
+\newcommand\default[2]{%
+	\if\relax\detokenize{#1}\relax{#2}\else{#1}\fi%
+}
+% Feature: Use today's date if time isn't given
+\usepackage[nodayofweek]{datetime}
+% Feature: Override mla.sty linespread with the mla.linespread variable
+$if(mla.linespread)$\linespread{$mla.linespread$}$else$
+\linespread{2}
+$endif$
+% Begin document
+\begin{document}
+	\begin{mla}{%
+		\default{$firstName$}{John}%
+	}{%
+		\default{$lastName$}{Doe}%
+	}{%
+		\default{$professor$}{Professor Foobius Bar}%
+	}{%
+		\default{$class$}{ABC 1234}%
+	}{%
+		\default{$date$}{\shortdate\today}%
+	}{%
+		\default{$title$}{Title}%
+	}%
+		$body$
+	\end{mla}
 \end{document}
