@@ -17,6 +17,18 @@ lua << EOF
 				relativenumber = false, -- Hide relative numbers
 			}
 		},
+		-- Quit Neovim if quitting from ZenMode (based on: https://github.com/folke/zen-mode.nvim/issues/54#issuecomment-1200155414)
+		on_open = function(_)
+			vim.cmd("cabbrev <buffer> q let b:quitFromZen = 1 <bar> q")
+			vim.cmd("cabbrev <buffer> wq let b:quitFromZen = 1 <bar> wq")
+			vim.cmd("cabbrev <buffer> x let b:quitFromZen = 1 <bar> x")
+		end,
+		on_close = function()
+			if vim.b.quitFromZen == 1 then
+				vim.b.quitFromZen = 0
+				vim.cmd("q")
+			end
+		end,
 	})
 EOF
 
