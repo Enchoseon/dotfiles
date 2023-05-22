@@ -27,8 +27,6 @@ lua << EOF
 			"gitattributes",
 			"gitcommit",
 			"gitignore",
-			-- Help
-			"help",
 		},
 		auto_install = true,
 		highlight = { 
