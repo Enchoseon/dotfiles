@@ -35,8 +35,21 @@ EOF
 " folke/twilight.nvim: Exclude Markdown from dimming (only looks good with code)
 lua require("twilight").setup({ exclude = { "markdown", "vimwiki" } })
 
-" nvim-lualine/lualine.nvim: Setup Lualine with Fugitive support
-lua require("lualine").setup({ extensions = { "fugitive" } })
+" nvim-lualine/lualine.nvim: Fugitive integration and show when recording a macro (using folke/noice.nvim api)
+lua << EOF
+	require("lualine").setup({
+		extensions = { "fugitive" },
+		sections = {
+			lualine_x = {
+				{
+					require("noice").api.statusline.mode.get,
+					cond = require("noice").api.statusline.mode.has,
+					color = { fg = "#ff9e64" },
+				}
+			},
+		}
+	})
+EOF
 
 " folke/noice.nvim: Setup
 lua vim.notify = require("noice").setup()
