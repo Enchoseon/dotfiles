@@ -5,6 +5,10 @@
 	insteadOf = https://gitlab.com/
 [url "ssh://git@bitbucket.org/"]
 	insteadOf = https://bitbucket.org/
+# Aliases
+[alias]
+	# See all unpushed commits on all branches (https://stackoverflow.com/a/3338774)
+	ahead = log --branches --not --remotes
 # Delta (`dev-util/git-delta`)
 [core]
 	pager = delta
