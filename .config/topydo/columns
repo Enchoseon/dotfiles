@@ -1,36 +1,28 @@
-# Prioritized items that aren't overdue
+# Prioritized items
 [Prioritized]
 title = Prioritized
-filterexpr = due:>yesterday (>Z)
+filterexpr = due:>yesterday (>=Z)
 sortexpr = desc:priority,asc:due
 show_all = 0
 
-# Prioritized items that are overdue
-[Prioritized Overdue]
-title = Prioritized Overdue
-filterexpr = due:<today (>Z)
-sortexpr = desc:priority,asc:due
-show_all = 1
-
 # Unprioritized items
-[Other]
-title = Other
-filterexpr = due:>yesterday (<Z) -system
+[Unprioritized]
+title = Unprioritized
+filterexpr = due:>yesterday (<Z)
 sortexpr = desc:priority,asc:due
 show_all = 1
 
-# Unprioritized items that are overdue
-[Other Overdue]
-title = Other Overdue
-filterexpr = due:<today (<Z) -system
+# Overdue items
+[Overdue]
+title = Overdue
+filterexpr = due:<today (<Z)
 sortexpr = desc:priority,asc:due
 show_all = 1
 
-# System-related items
-[System]
-title = System
-filterexpr = +system
-sortexpr = asc:due
+# Items that are never due
+[Neverdue]
+title = Neverdue
+filterexpr = -due
 show_all = 1
 
 # Items that are below their starting threshold

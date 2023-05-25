@@ -62,6 +62,8 @@ call plug#begin()
 	Plug 'tpope/vim-fugitive' 
 	" Contextual indentation highlighting
 	Plug 'lukas-reineke/indent-blankline.nvim'
+	" Set shiftwidth and expandtab automatically per-file
+	Plug 'tpope/vim-sleuth'
 	" === Navigation ===
 	" Fuzzy finder (optional deps: `fd` and `ripgrep`)
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
