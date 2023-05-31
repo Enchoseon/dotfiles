@@ -9,14 +9,14 @@ show_all = 0
 [Unprioritized]
 title = Unprioritized
 filterexpr = due:>yesterday (<Z)
-sortexpr = desc:priority,asc:due
+sortexpr = desc:importance,asc:due
 show_all = 1
 
 # Overdue items
 [Overdue]
 title = Overdue
 filterexpr = due:<today (<Z)
-sortexpr = desc:priority,asc:due
+sortexpr = desc:importance,asc:due
 show_all = 1
 
 # Items that are never due
