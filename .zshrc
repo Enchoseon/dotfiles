@@ -21,7 +21,7 @@ alias free='free -m' # Show sizes in MB
 # Ranger
 alias nas="ranger ${HOME}/Sync/NAS" # ... in my NAS directory
 alias notes="ranger ${HOME}/Sync/Notes/Personal" # ... in my [personal] notes directory
-alias school="ranger '${HOME}/Sync/Notes/School/Spring 2023'" # ... in my school directory
+alias school="ranger '${HOME}/Sync/Notes/School/Fall 2023'" # ... in my school directory
 
 # Quick Notes
 alias n="vi ${HOME}/Sync/Notes/Personal/Quicknote.md"
