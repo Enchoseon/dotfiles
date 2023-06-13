@@ -99,6 +99,7 @@ fi
 if prompt "V.1 Would you like to install topydo to a virtual Python environment in ~/Scripts? (https://github.com/topydo/topydo)"; then
 	pythonInstall "topydo"
 	pythonInstall "topydo[prompt]"
+	pythonInstall "topydo[columns]"
 fi
 if prompt "V.2 Would you like to install auto editor to a virtual Python environment in ~/Scripts? (https://github.com/WyattBlue/auto-editor)"; then
 	pythonInstall "auto-editor"
