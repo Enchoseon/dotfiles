@@ -90,29 +90,27 @@ if prompt "III. Would you like to update powerlevel10k + zsh-autosuggestions + z
 	echo "" | tee "zsh-syntax-highlighting/.revision-hash" "zsh-syntax-highlighting/.version" > /dev/null
 fi
 
-# Step IV: Merge Xresources
-if prompt "IV. Would you like to run \"xrdb -merge ~/.Xresources\" to apply your current Xresources file? (this does not change your Xresources file)"; then
-	xrdb -merge ~/.Xresources
-fi
-
-# Step V: Install various Python cli tools to ~/Scripts, accessible through aliases in ~/.zshrc
-if prompt "V.1 Would you like to install topydo to a virtual Python environment in ~/Scripts? (https://github.com/topydo/topydo)"; then
+# Step IV: Install various Python cli tools to ~/Scripts, accessible through aliases in ~/.zshrc
+if prompt "IV.1 Would you like to install topydo to a virtual Python environment in ~/Scripts? (https://github.com/topydo/topydo)"; then
 	pythonInstall "topydo"
 	pythonInstall "topydo[prompt]"
 	pythonInstall "topydo[columns]"
 fi
-if prompt "V.2 Would you like to install auto editor to a virtual Python environment in ~/Scripts? (https://github.com/WyattBlue/auto-editor)"; then
+if prompt "IV.2 Would you like to install auto editor to a virtual Python environment in ~/Scripts? (https://github.com/WyattBlue/auto-editor)"; then
 	pythonInstall "auto-editor"
 fi
+if prompt "IV.3 Would you like to install whoogle to a virtual Python environment in ~/Scripts? (https://github.com/benbusby/whoogle-search#pip)"; then
+	pythonInstall "whoogle"
+fi
 
-# Step VI: Update/Install Neovim Plugins + Vim Plug using Vim Plug
-if prompt "VI. Would you like to update/install all Neovim plugins + Vim Plug? (Vim Plug is assumed to already be installed)"; then
+# Step V: Update/Install Neovim Plugins + Vim Plug using Vim Plug
+if prompt "V. Would you like to update/install all Neovim plugins + Vim Plug? (Vim Plug is assumed to already be installed)"; then
 	nvim -c "PlugUpgrade |  PlugInstall | PlugUpdate | quitall"
 fi
 
-# Step VII: Install mla.sty into TeX Home directory so that it can be used by XeLaTeX to convert academic Markdown into MLA-formatted PDFs (see: ~/.config/nvim/pandoc/sample-mla.*)
+# Step VI: Install mla.sty into TeX Home directory so that it can be used by XeLaTeX to convert academic Markdown into MLA-formatted PDFs (see: ~/.config/nvim/pandoc/sample-mla.*)
 TEX_HOME=$(kpsewhich -var-value=TEXMFHOME)
-if prompt "VII. Would you like to install mla.sty into your TeX home directory (${TEX_HOME})? This makes it accessible to XeLaTeX for exporting academic Markdown to MLA-formatted PDFs from Neovim (see: ~/.config/nvim/pandoc/sample-mla.* for a demo)"; then
+if prompt "VI. Would you like to install mla.sty into your TeX home directory (${TEX_HOME})? This makes it accessible to XeLaTeX for exporting academic Markdown to MLA-formatted PDFs from Neovim (see: ~/.config/nvim/pandoc/sample-mla.* for a demo)"; then
 	INSTALL_DIR="${TEX_HOME}/tex/latex/local/"
 	mkdir -p "${INSTALL_DIR}"
 	cp "${HOME}/.config/yadm/xelatex/mla.sty" "${INSTALL_DIR}"
