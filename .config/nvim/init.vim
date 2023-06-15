@@ -122,6 +122,15 @@ map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winhe
 " Start in insert mode at top of file when entering gitcommits
 autocmd FileType gitcommit :1 | :startinsert!
 
+" Go into insert mode when entering terminal window
+autocmd BufWinEnter,WinEnter term://* startinsert
+
+" Go into insert mode when opening terminal window
+autocmd TermOpen * startinsert
+
+" Go into normal mode when exiting terminal window
+autocmd BufLeave term://* stopinsert
+
 " ==========================
 " Create Undo File Directory
 " ==========================
