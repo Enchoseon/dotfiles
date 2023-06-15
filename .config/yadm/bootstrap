@@ -100,7 +100,7 @@ if prompt "IV.2 Would you like to install auto editor to a virtual Python enviro
 	pythonInstall "auto-editor"
 fi
 if prompt "IV.3 Would you like to install whoogle to a virtual Python environment in ~/Scripts? (https://github.com/benbusby/whoogle-search#pip)"; then
-	pythonInstall "whoogle"
+	pythonInstall "whoogle-search"
 fi
 
 # Step V: Update/Install Neovim Plugins + Vim Plug using Vim Plug
