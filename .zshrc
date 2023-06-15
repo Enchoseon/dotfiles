@@ -34,8 +34,8 @@ alias t="${HOME}/Scripts/venv/bin/topydo columns" # Launch topydo columns TUI
 # Auto Editor
 alias auto-editor="${HOME}/Scripts/venv/bin/auto-editor --ffmpeg-location '/usr/bin/ffmpeg' --no-open"
 
-# Emacs
-alias enw="emacs -nw"
+# Whoogle Search
+alias whoogle-search="${HOME}/Scripts/venv/bin/whoogle-search" # Launch whoogle search
 
 # Quitly Close Terminal Emulator
 alias :q="exit"
