@@ -113,7 +113,7 @@ com -bar W exe 'w !pkexec tee >/dev/null %:p:S' | setl nomod
 " ========
 
 " <F4> to open terminal in split at bottom of screen at current file's directory (based on https://vi.stackexchange.com/a/14533)
-map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR<CR>
+map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR>
 
 " ===================
 " Non-Plugin Autocmds
