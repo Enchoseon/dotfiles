@@ -108,6 +108,13 @@ lua require('impatient')
 " Based on https://vi.stackexchange.com/a/25038
 com -bar W exe 'w !pkexec tee >/dev/null %:p:S' | setl nomod
 
+" ========
+" Mappings
+" ========
+
+" <F4> to open terminal in split at bottom of screen at current file's directory (based on https://vi.stackexchange.com/a/14533)
+map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR<CR>
+
 " ===================
 " Non-Plugin Autocmds
 " ===================
@@ -160,6 +167,7 @@ set scrolloff=8 " Leave space between the top/bottom of the screen and the curso
 " System Integration
 set autoread " Read file if changed
 set clipboard=unnamedplus " Use system keyboard
+set shell=/bin/zsh
 
 " Save undo files ~/.cache/nvim/undo
 set undodir=~/.cache/nvim/undo
