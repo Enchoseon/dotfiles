@@ -182,7 +182,7 @@ set scrolloff=8 " Leave space between the top/bottom of the screen and the curso
 " System Integration
 set autoread " Read file if changed
 set clipboard=unnamedplus " Use system keyboard
-set shell=/bin/zsh
+set shell=/bin/zsh " Use zsh instead of bash in :terminal
 
 " Save undo files ~/.cache/nvim/undo
 set undodir=~/.cache/nvim/undo
