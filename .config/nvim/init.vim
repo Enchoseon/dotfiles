@@ -37,6 +37,8 @@ call plug#begin()
 		Plug 'rcarriga/nvim-notify'
 		" UI Library for noice
 		Plug 'MunifTanjim/nui.nvim'
+	" View LSP results in many different & convenient ways
+	Plug 'folke/trouble.nvim'
 	" === Export & Preview ===
 	" Integration with pandoc document converter
 	Plug 'vim-pandoc/vim-pandoc' 
