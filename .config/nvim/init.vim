@@ -46,13 +46,13 @@ call plug#begin()
 	" Intuitive bullet-point behavior in Markdown
 	Plug 'dkarter/bullets.vim' 
 	" The Vimwiki plugin
-	Plug 'vimwiki/vimwiki' 
+	Plug 'vimwiki/vimwiki', { 'for': 'markdown' }
 	" Seamless wrapping tweaks and undo points suited for prose (e.g. undo points on punction)
 	Plug 'preservim/vim-pencil' 
 		" Seamless and minimal auto-correction (e.g. `teh` -> `the`, `Im` -> `I'm`, etc.)
 		Plug 'preservim/vim-litecorrect' 
 	" The `:Wordy` command for detecting words/statements that are weak, weaselly, idiomatic, jargony, etc.
-	Plug 'preservim/vim-wordy'
+	Plug 'preservim/vim-wordy', { 'for': 'markdown' }
 	" LanguageTool support (requires Java 8+)
 	Plug 'rhysd/vim-grammarous'
 	" === Coding ===
