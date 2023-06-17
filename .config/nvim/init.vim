@@ -175,7 +175,7 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd TermOpen * startinsert | setlocal nobuflisted | setlocal nonumber | setlocal norelativenumber
 " Go into normal mode when exiting terminal window
 autocmd BufLeave term://* stopinsert
-" Don't show "[Process exited]" in finised terminals (source: https://github.com/neovim/neovim/issues/14986#issuecomment-902705190)
+" HACK: Delete the buffers of finished terminals (source: https://github.com/neovim/neovim/issues/14986#issuecomment-902705190)
 autocmd TermClose * execute "bdelete! " . expand("<abuf>")
 
 " ====
