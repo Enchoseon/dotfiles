@@ -145,25 +145,23 @@ autocmd BufLeave term://* stopinsert
 " Don't show "[Process exited]" in finised terminals (source: https://github.com/neovim/neovim/issues/14986#issuecomment-902705190)
 autocmd TermClose * execute "bdelete! " . expand("<abuf>")
 
-" ===================
-" :W to Write as Sudo
-" ===================
+" ====
+" Misc
+" ====
 
+" :W to Write as Sudo
 " Based on https://vi.stackexchange.com/a/25038
 com -bar W exe 'w !pkexec tee >/dev/null %:p:S' | setl nomod
 
-" ==========================
 " Create Undo File Directory
-" ==========================
-
 " https://vi.stackexchange.com/a/53
 if !isdirectory($HOME."/.cache/nvim/undo")
 	call mkdir($HOME."/.cache/nvim/undo", "p", 0700)
 endif
 
-" =====================
-" Other Neovim Settings
-" =====================
+" ===============
+" Neovim Settings
+" ===============
 
 " Search Case (In)sensitivity and Highlight
 set ignorecase " Ignore casing when searching
