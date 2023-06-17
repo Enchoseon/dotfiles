@@ -77,6 +77,8 @@ call plug#begin()
 	Plug 'debugloop/telescope-undo.nvim'
 	" Extend "%" to language-specific words using TreeSitter
 	Plug 'andymass/vim-matchup'
+	" Tabline
+	Plug 'romgrk/barbar.nvim'
 	" === LSP Zero ===
 	" == LSP Support ==
 	Plug 'neovim/nvim-lspconfig'
@@ -113,11 +115,42 @@ map z= :Telescope spell_suggest theme=cursor<cr>
 nnoremap <leader>vw <cmd>lua require("telescope").extensions.vimwiki.vimwiki()<cr>
 " <leader>vg to live grep files
 nnoremap <leader>vg <cmd>lua require("telescope").extensions.vimwiki.live_grep()<cr>
+" romgrk/barbar.nvim: Keyboard-based navigation
+" - Move to previous/next
+nnoremap <silent> <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent> <A-.> <Cmd>BufferNext<CR>
+" - Re-order to previous/next
+nnoremap <silent> <A-<> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent> <A->> <Cmd>BufferMoveNext<CR>
+" - Goto buffer in position...
+nnoremap <silent> <A-1> <Cmd>BufferGoto 1<CR>
+nnoremap <silent> <A-2> <Cmd>BufferGoto 2<CR>
+nnoremap <silent> <A-3> <Cmd>BufferGoto 3<CR>
+nnoremap <silent> <A-4> <Cmd>BufferGoto 4<CR>
+nnoremap <silent> <A-5> <Cmd>BufferGoto 5<CR>
+nnoremap <silent> <A-6> <Cmd>BufferGoto 6<CR>
+nnoremap <silent> <A-7> <Cmd>BufferGoto 7<CR>
+nnoremap <silent> <A-8> <Cmd>BufferGoto 8<CR>
+nnoremap <silent> <A-9> <Cmd>BufferGoto 9<CR>
+nnoremap <silent> <A-0> <Cmd>BufferLast<CR>
+" - Pin/unpin buffer
+nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
+" - Close buffer
+nnoremap <silent> <A-c> <Cmd>BufferClose<CR>
+" - Restore buffer
+nnoremap <silent> <A-s-c> <Cmd>BufferRestore<CR>
+" - Sort by...
+nnoremap <silent> <Space>bb <Cmd>BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bd <Cmd>BufferOrderByDirectory<CR>
+nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
+nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 " === Non-Plugin ===
-" <F4> to open terminal in split at bottom of screen at current file's directory (based on https://vi.stackexchange.com/a/14533)
-map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR>
-" Make escape switch to normal mode and toggle window focus when in the terminal
-tnoremap <Esc> <C-\><C-n>:wincmd k<CR>
+" <F4> to open a nobuflisted terminal in a split at the bottom of screen cd'ed to the current file's directory (based on https://vi.stackexchange.com/a/14533)
+map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR><Esc>
+" <F5> to open vertical split to the left with Oil
+map <F5> :vnew<Bar>:exe "vert resize " . (winwidth(0) * 2/5)<Bar>:Oil<CR>
+" Make escape switch to normal mode and change window focus when in the terminal
+tnoremap <Esc> <C-\><C-n>:wincmd p<CR>
 
 " ========
 " Autocmds
@@ -138,8 +171,8 @@ autocmd FileType markdown,vimwiki call pencil#init({"wrap": "soft"}) | call lite
 autocmd FileType gitcommit :1 | :startinsert!
 " Go into insert mode when entering terminal window
 autocmd BufWinEnter,WinEnter term://* startinsert
-" Go into insert mode when opening terminal window
-autocmd TermOpen * startinsert
+" When opening terminal enter insert mode, hide from tabline, & hide line numbers
+autocmd TermOpen * startinsert | setlocal nobuflisted | setlocal nonumber | setlocal norelativenumber
 " Go into normal mode when exiting terminal window
 autocmd BufLeave term://* stopinsert
 " Don't show "[Process exited]" in finised terminals (source: https://github.com/neovim/neovim/issues/14986#issuecomment-902705190)

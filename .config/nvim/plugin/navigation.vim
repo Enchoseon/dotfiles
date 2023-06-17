@@ -15,6 +15,14 @@ lua require("telescope").load_extension("vimwiki")
 " stevearc/oil.nvim: Setup Oil.nvim to not show file icons
 lua require("oil").setup({ columns={} })
 
+" romgrk/barbar.nvim: Auto-hide when there is only one "tab"
+let g:barbar_auto_setup = v:false
+lua << EOF
+	require("barbar").setup({
+		auto_hide = true,
+	})
+EOF
+
 " netrw: Disable Netrw. Too many bugs :(
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
