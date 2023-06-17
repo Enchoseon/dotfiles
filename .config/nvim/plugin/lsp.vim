@@ -8,7 +8,25 @@ lua <<EOF
 	lsp.on_attach(function(client, bufnr)
 		lsp.default_keymaps({buffer = bufnr})
 	end)
-	require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+	-- LanguageTool grammar check (uses neovim/nvim-lspconfig & williamboman/mason.nvim)
+	require("lspconfig").ltex.setup({
+		settings = {
+			ltex = {
+				enabled = { "latex", "tex", "bib", "markdown", "vimwiki" },
+				language = "en-US",
+				-- completionEnabled = true,
+				sentenceCacheSize = 4000,
+				additionalRules = {
+					enablePickyRules = true,
+					motherTongue = "en-US",
+				},
+				disabledRules = {
+					-- Native spell check is better (]s, [s, and z=)
+					['en-US'] = {"MORFOLOGIK_RULE_EN_US"}
+				},
+			}
+		}
+	});
 	lsp.setup()
 EOF
 

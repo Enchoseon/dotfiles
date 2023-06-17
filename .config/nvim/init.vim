@@ -53,8 +53,6 @@ call plug#begin()
 		Plug 'preservim/vim-litecorrect' 
 	" The `:Wordy` command for detecting words/statements that are weak, weaselly, idiomatic, jargony, etc.
 	Plug 'preservim/vim-wordy', { 'for': 'markdown' }
-	" LanguageTool support (requires Java 8+)
-	Plug 'rhysd/vim-grammarous'
 	" === Coding ===
 	" Better highlighting
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 

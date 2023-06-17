@@ -6,6 +6,3 @@ let g:bullets_enabled_file_types = [ "markdown", "text", "gitcommit" ] " Only en
 let g:vimwiki_list = [{"path": "~/Sync/Notes/", "syntax": "markdown", "ext": ".md", "html_filename_parameterization": 0 }] " Set Vimwiki folder to my Notes folder and use the Markdown extension
 let g:vimwiki_global_ext = 0 " Restrict Vimwiki to Notes folder
 let g:vimwiki_custom_wiki2html=$HOME."/.config/nvim/pandoc/vimwiki_converter.sh" " Export Markdown syntax
-
-" rhysd/vim-grammarous: Launch automatically when editing markdown, text, or gitcommit files
-let g:grammarous#jar_url = "https://www.languagetool.org/download/LanguageTool-5.9.zip" " LanguageTool version 6 is incompatible with rhysd/vim-grammarous (https://github.com/rhysd/vim-grammarous/issues/110)
