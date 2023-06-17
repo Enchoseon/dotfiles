@@ -101,41 +101,56 @@ call plug#end()
 " lewis6991/impatient.nvim: Start impatient.nvim
 lua require('impatient')
 
+" ========
+" Mappings
+" ========
+
+" === Navigation ===
+" nvim-telescope/telescope.nvim: Replace default spell suggest menu with Telescope
+map z= :Telescope spell_suggest theme=cursor<cr>
+" ElPiloto/telescope-vimwiki.nvim: Load Telescope extension
+" <leader>vw to search filenames
+nnoremap <leader>vw <cmd>lua require("telescope").extensions.vimwiki.vimwiki()<cr>
+" <leader>vg to live grep files
+nnoremap <leader>vg <cmd>lua require("telescope").extensions.vimwiki.live_grep()<cr>
+" === Non-Plugin ===
+" <F4> to open terminal in split at bottom of screen at current file's directory (based on https://vi.stackexchange.com/a/14533)
+map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR>
+" Make escape switch to normal mode and toggle window focus when in the terminal
+tnoremap <Esc> <C-\><C-n>:wincmd k<CR>
+
+" ========
+" Autocmds
+" ========
+
+" === Aesthetics ===
+" folke/zen-mode.nvim: Open markdown and todo.txt files in ZenMode
+autocmd VimEnter *.md ZenMode
+autocmd VimEnter *todo.txt ZenMode
+" === Export & Preview ===
+" vim-pandoc/vim-pandoc: Enable vim-pandoc on Markdown files (workaround https://github.com/vim-pandoc/vim-pandoc/issues/34)
+autocmd FileType pandoc set filetype=markdown.pandoc 
+" === Prose ===
+" preservim/vim-pencil: Launch various prose plugins automatically and use hard wrapping
+autocmd FileType markdown,vimwiki call pencil#init({"wrap": "soft"}) | call litecorrect#init()
+" === Non-Plugin ===
+" Start in insert mode at top of file when entering gitcommits
+autocmd FileType gitcommit :1 | :startinsert!
+" Go into insert mode when entering terminal window
+autocmd BufWinEnter,WinEnter term://* startinsert
+" Go into insert mode when opening terminal window
+autocmd TermOpen * startinsert
+" Go into normal mode when exiting terminal window
+autocmd BufLeave term://* stopinsert
+" Don't show "[Process exited]" in finised terminals (source: https://github.com/neovim/neovim/issues/14986#issuecomment-902705190)
+autocmd TermClose * execute "bdelete! " . expand("<abuf>")
+
 " ===================
 " :W to Write as Sudo
 " ===================
 
 " Based on https://vi.stackexchange.com/a/25038
 com -bar W exe 'w !pkexec tee >/dev/null %:p:S' | setl nomod
-
-" ===================
-" Non-Plugin Mappings
-" ===================
-
-" <F4> to open terminal in split at bottom of screen at current file's directory (based on https://vi.stackexchange.com/a/14533)
-map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR>
-
-" Make escape switch to normal mode and toggle window focus when in the terminal
-tnoremap <Esc> <C-\><C-n>:wincmd k<CR>
-
-" ===================
-" Non-Plugin Autocmds
-" ===================
-
-" Start in insert mode at top of file when entering gitcommits
-autocmd FileType gitcommit :1 | :startinsert!
-
-" Go into insert mode when entering terminal window
-autocmd BufWinEnter,WinEnter term://* startinsert
-
-" Go into insert mode when opening terminal window
-autocmd TermOpen * startinsert
-
-" Go into normal mode when exiting terminal window
-autocmd BufLeave term://* stopinsert
-
-" Don't show "[Process exited]" in finised terminals (source: https://github.com/neovim/neovim/issues/14986#issuecomment-902705190)
-autocmd TermClose * execute "bdelete! " . expand("<abuf>")
 
 " ==========================
 " Create Undo File Directory

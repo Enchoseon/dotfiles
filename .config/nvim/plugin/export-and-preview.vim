@@ -1,7 +1,5 @@
 " vim-pandoc/vim-pandoc
 " === Filetype Fixes & Setup ===
-" Enable vim-pandoc on Markdown files. Workaround for https://github.com/vim-pandoc/vim-pandoc/issues/34
-autocmd FileType pandoc set filetype=markdown.pandoc 
 " Disable folding module
 let g:pandoc#modules#disabled = [ "folding" ] 
 " === Custom Pandoc Functions ===

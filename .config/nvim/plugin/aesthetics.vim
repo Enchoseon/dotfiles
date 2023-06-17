@@ -4,9 +4,6 @@ colorscheme catppuccin
 " psliwka/vim-smoothie: Even smoother animation
 let g:smoothie_update_interval = 1
 
-" folke/zen-mode.nvim: Open markdown and todo.txt files in ZenMode
-autocmd VimEnter *.md ZenMode
-autocmd VimEnter *todo.txt ZenMode
 " folke/zen-mode.nvim: Aesthetic tweaks
 lua << EOF
 	require("zen-mode").setup({
