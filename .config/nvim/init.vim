@@ -44,7 +44,7 @@ call plug#begin()
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } 
 	" === Prose ===
 	" Intuitive bullet-point behavior in Markdown
-	Plug 'dkarter/bullets.vim' 
+	Plug 'dkarter/bullets.vim'
 	" The Vimwiki plugin
 	Plug 'vimwiki/vimwiki', { 'for': 'markdown' }
 	" Seamless wrapping tweaks and undo points suited for prose (e.g. undo points on punction)
@@ -157,9 +157,9 @@ if !isdirectory($HOME."/.cache/nvim/undo")
 	call mkdir($HOME."/.cache/nvim/undo", "p", 0700)
 endif
 
-" ===============
-" Neovim Settings
-" ===============
+" ========
+" Settings
+" ========
 
 " Search Case (In)sensitivity and Highlight
 set ignorecase " Ignore casing when searching
