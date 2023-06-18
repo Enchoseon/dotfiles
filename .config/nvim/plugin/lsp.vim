@@ -21,8 +21,14 @@ lua <<EOF
 					motherTongue = "en-US",
 				},
 				disabledRules = {
-					-- Native spell check is better (]s, [s, and z=)
-					['en-US'] = {"MORFOLOGIK_RULE_EN_US"}
+					['en-US'] = {
+						-- Native spell check is better (]s, [s, and z=)
+						"MORFOLOGIK_RULE_EN_US",
+						-- Too Picky Rules
+						"EN_QUOTES", -- Better handled by Pandoc filters
+						"ELLIPSIS", 
+						"DASH_RULE", -- Interferes w/ lists
+					}
 				},
 			}
 		}
