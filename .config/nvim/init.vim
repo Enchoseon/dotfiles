@@ -109,12 +109,12 @@ lua require('impatient')
 
 " === Navigation ===
 " nvim-telescope/telescope.nvim: Replace default spell suggest menu with Telescope
-map z= :Telescope spell_suggest theme=cursor<cr>
+map <silent> z= :Telescope spell_suggest theme=cursor<cr>
 " ElPiloto/telescope-vimwiki.nvim: Load Telescope extension
 " <leader>vw to search filenames
-nnoremap <leader>vw <cmd>lua require("telescope").extensions.vimwiki.vimwiki()<cr>
+nnoremap <silent> <leader>vw <cmd>lua require("telescope").extensions.vimwiki.vimwiki()<cr>
 " <leader>vg to live grep files
-nnoremap <leader>vg <cmd>lua require("telescope").extensions.vimwiki.live_grep()<cr>
+nnoremap <silent> <leader>vg <cmd>lua require("telescope").extensions.vimwiki.live_grep()<cr>
 " romgrk/barbar.nvim: Keyboard-based navigation
 " - Move to previous/next
 nnoremap <silent> <A-,> <Cmd>BufferPrevious<CR>
@@ -146,11 +146,11 @@ nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
 nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 " === Non-Plugin ===
 " <F4> to open a nobuflisted terminal in a split at the bottom of screen cd'ed to the current file's directory (based on https://vi.stackexchange.com/a/14533)
-map <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR><Esc>
-" <F5> to open vertical split to the left with Oil
-map <F5> :vnew<Bar>:exe "vert resize " . (winwidth(0) * 2/5)<Bar>:Oil<CR>
+map <silent> <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR>
+" <F9> to open vertical split to the left with Oil
+map <silent> <F9> :vnew<Bar>:exe "vert resize " . (winwidth(0) * 2/5)<Bar>:Oil<CR>
 " Make escape switch to normal mode and change window focus when in the terminal
-tnoremap <Esc> <C-\><C-n>:wincmd p<CR>
+tnoremap <silent> <Esc> <C-\><C-n>:wincmd k<Bar>wincmd l<CR>
 
 " ========
 " Autocmds
