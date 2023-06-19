@@ -25,8 +25,9 @@ lua <<EOF
 						-- Native spell check is better (]s, [s, and z=)
 						"MORFOLOGIK_RULE_EN_US",
 						-- Too Picky Rules
-						"EN_QUOTES", -- Better handled by Pandoc filters
+						"EN_QUOTES",
 						"ELLIPSIS", 
+						"ARROWS",
 						"DASH_RULE", -- Interferes w/ lists
 					}
 				},
