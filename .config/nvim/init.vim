@@ -64,6 +64,8 @@ call plug#begin()
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	" Set shiftwidth and expandtab automatically per-file
 	Plug 'tpope/vim-sleuth'
+	" Integrated keymappings to work with surrounding text
+	Plug 'tpope/vim-surround'
 	" === Navigation ===
 	" Fuzzy finder (optional deps: `fd` and `ripgrep`)
 	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } 
