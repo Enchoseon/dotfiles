@@ -49,7 +49,39 @@ lua << EOF
 EOF
 
 " folke/noice.nvim: Setup
-lua vim.notify = require("noice").setup()
+lua << EOF
+	vim.notify = require("noice").setup({
+		lsp = {  -- Disable LSP Indicator
+			progress = { enabled = false }
+		},
+		routes = { 
+			{ -- Hide :write messages
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "written",
+				},
+				opts = { skip = true },
+			},
+			{ --  Show notification when recording macro
+				view = "notify",
+				filter = { event = "msg_showmode" },
+			},
+		},
+		views = { -- Less distracting cmdline popup
+			cmdline_popup = {
+				border = {
+					style = "none",
+					padding = { 1, 1 },
+				},
+				filter_options = {},
+				win_options = {
+					winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+				},
+			},
+		},
+	})
+EOF
 
 " rcarriga/nvim-notify: Load Telescope extension
 lua require("telescope").load_extension("notify") 
