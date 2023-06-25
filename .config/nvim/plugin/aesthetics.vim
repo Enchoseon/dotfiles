@@ -83,5 +83,13 @@ lua << EOF
 	})
 EOF
 
-" rcarriga/nvim-notify: Load Telescope extension
-lua require("telescope").load_extension("notify") 
+" rcarriga/nvim-notify: Set style, timeout, and load Telescope extension
+lua << EOF
+	require("notify").setup({
+		fps = 60,
+		render = "compact",
+		stages = "fade",
+		timeout = 3000,
+	})
+	require("telescope").load_extension("notify") 
+EOF
