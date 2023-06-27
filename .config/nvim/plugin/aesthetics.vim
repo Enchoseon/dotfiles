@@ -65,7 +65,10 @@ lua << EOF
 			},
 			{ --  Show notification when recording macro
 				view = "notify",
-				filter = { event = "msg_showmode" },
+				filter = {
+					event = "msg_showmode",
+					find = "recording",
+				},
 			},
 		},
 		views = { -- Less distracting cmdline popup
