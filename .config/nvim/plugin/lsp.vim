@@ -29,6 +29,7 @@ lua <<EOF
 						"ELLIPSIS", 
 						"ARROWS",
 						"DASH_RULE", -- Interferes w/ lists
+						"CURRENCY", -- Interferes w/ KaTeX/LaTeX embedded in Markdown
 					}
 				},
 			}
