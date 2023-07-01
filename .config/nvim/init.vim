@@ -151,8 +151,10 @@ nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 map <silent> <F4> :let $VIM_DIR=expand('%:p:h')<CR>:bot split<Bar>:exe "resize " . (winheight(0) * 2/5)<Bar>:term<CR>cd $VIM_DIR && clear<CR>
 " <F9> to open vertical split to the left with Oil
 map <silent> <F9> :vnew<Bar>:exe "vert resize " . (winwidth(0) * 2/5)<Bar>:Oil<CR>
-" Make escape switch to normal mode and change window focus when in the terminal
+" <Esc> to leave terminal and change window focus
 tnoremap <silent> <Esc> <C-\><C-n>:wincmd k<Bar>wincmd l<CR>
+" <F4> to leave terminal without changing window focus
+tnoremap <silent> <F4> <C-\><C-n>
 
 " ========
 " Autocmds
